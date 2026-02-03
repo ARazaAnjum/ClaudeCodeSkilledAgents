@@ -1,0 +1,21 @@
+{
+  "name": "security-reviewer",
+  "description": "Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews.",
+  "triggers": [
+    "security review",
+    "vulnerability scan",
+    "SAST",
+    "security audit",
+    "penetration test",
+    "code audit",
+    "security analysis",
+    "infrastructure security",
+    "DevSecOps",
+    "cloud security",
+    "compliance audit"
+  ],
+  "role": "specialist",
+  "scope": "review",
+  "outputFormat": "report",
+  "skillPath": "../skills/security-reviewer/SKILL.md"
+}

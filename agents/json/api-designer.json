@@ -1,0 +1,19 @@
+{
+  "name": "api-designer",
+  "description": "Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.",
+  "triggers": [
+    "API design",
+    "REST API",
+    "OpenAPI",
+    "API specification",
+    "API architecture",
+    "resource modeling",
+    "API versioning",
+    "GraphQL schema",
+    "API documentation"
+  ],
+  "role": "architect",
+  "scope": "design",
+  "outputFormat": "specification",
+  "skillPath": "../skills/api-designer/SKILL.md"
+}

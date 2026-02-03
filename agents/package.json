@@ -1,0 +1,61 @@
+{
+  "name": "@claudecodeskills/agents",
+  "version": "1.0.0",
+  "description": "Agent command files for ClaudeCodeSkills - 69 specialized AI agents for software development",
+  "main": "typescript/index.ts",
+  "types": "typescript/index.ts",
+  "scripts": {
+    "generate": "node ../generate-agents.js",
+    "build": "tsc",
+    "test": "echo \"No tests specified yet\" && exit 0",
+    "lint": "echo \"Linting not configured yet\" && exit 0"
+  },
+  "keywords": [
+    "claude",
+    "agents",
+    "ai",
+    "skills",
+    "claude-code",
+    "agent-sdk",
+    "software-development",
+    "code-generation",
+    "ai-agents"
+  ],
+  "author": "ClaudeCodeSkills Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ClaudeCodeSkills.git",
+    "directory": "agents"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0"
+  },
+  "files": [
+    "typescript/",
+    "json/",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "import": "./typescript/index.ts",
+      "require": "./typescript/index.ts",
+      "types": "./typescript/index.ts"
+    },
+    "./json": {
+      "import": "./json/index.json",
+      "require": "./json/index.json"
+    },
+    "./typescript/*": {
+      "import": "./typescript/*.ts",
+      "types": "./typescript/*.ts"
+    },
+    "./json/*": {
+      "import": "./json/*.json"
+    }
+  }
+}

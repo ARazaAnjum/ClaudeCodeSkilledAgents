@@ -1,0 +1,20 @@
+{
+  "name": "code-documenter",
+  "description": "Use when adding docstrings, creating API documentation, or building documentation sites. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, tutorials, user guides.",
+  "triggers": [
+    "documentation",
+    "docstrings",
+    "OpenAPI",
+    "Swagger",
+    "JSDoc",
+    "comments",
+    "API docs",
+    "tutorials",
+    "user guides",
+    "doc site"
+  ],
+  "role": "specialist",
+  "scope": "implementation",
+  "outputFormat": "code",
+  "skillPath": "../skills/code-documenter/SKILL.md"
+}

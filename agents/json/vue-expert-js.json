@@ -1,0 +1,17 @@
+{
+  "name": "vue-expert-js",
+  "description": "Use when building Vue 3 applications with JavaScript only (no TypeScript). Invoke for JSDoc typing, vanilla JS composables, .mjs modules.",
+  "triggers": [
+    "Vue JavaScript",
+    "Vue without TypeScript",
+    "Vue JSDoc",
+    "Vue JS only",
+    "Vue vanilla JavaScript",
+    ".mjs Vue",
+    "Vue no TS"
+  ],
+  "role": "specialist",
+  "scope": "implementation",
+  "outputFormat": "code",
+  "skillPath": "../skills/vue-expert-js/SKILL.md"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "debugging-wizard",
+  "description": "Use when investigating errors, analyzing stack traces, or finding root causes of unexpected behavior. Invoke for error investigation, troubleshooting, log analysis, root cause analysis.",
+  "triggers": [
+    "debug",
+    "error",
+    "bug",
+    "exception",
+    "traceback",
+    "stack trace",
+    "troubleshoot",
+    "not working",
+    "crash",
+    "fix issue"
+  ],
+  "role": "specialist",
+  "scope": "analysis",
+  "outputFormat": "analysis",
+  "skillPath": "../skills/debugging-wizard/SKILL.md"
+}

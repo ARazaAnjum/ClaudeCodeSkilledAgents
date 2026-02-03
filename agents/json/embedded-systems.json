@@ -1,0 +1,21 @@
+{
+  "name": "embedded-systems",
+  "description": "Use when developing firmware for microcontrollers, implementing RTOS applications, or optimizing power consumption. Invoke for STM32, ESP32, FreeRTOS, bare-metal, power optimization, real-time systems.",
+  "triggers": [
+    "embedded systems",
+    "firmware",
+    "microcontroller",
+    "RTOS",
+    "FreeRTOS",
+    "STM32",
+    "ESP32",
+    "bare metal",
+    "interrupt",
+    "DMA",
+    "real-time"
+  ],
+  "role": "specialist",
+  "scope": "implementation",
+  "outputFormat": "code",
+  "skillPath": "../skills/embedded-systems/SKILL.md"
+}

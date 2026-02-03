@@ -1,0 +1,24 @@
+{
+  "name": "cloud-architect",
+  "description": "Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.",
+  "triggers": [
+    "AWS",
+    "Azure",
+    "GCP",
+    "Google Cloud",
+    "cloud migration",
+    "cloud architecture",
+    "multi-cloud",
+    "cloud cost",
+    "Well-Architected",
+    "landing zone",
+    "cloud security",
+    "disaster recovery",
+    "cloud native",
+    "serverless architecture"
+  ],
+  "role": "architect",
+  "scope": "infrastructure",
+  "outputFormat": "architecture",
+  "skillPath": "../skills/cloud-architect/SKILL.md"
+}

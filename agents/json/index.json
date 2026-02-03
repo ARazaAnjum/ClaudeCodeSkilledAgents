@@ -1,0 +1,1371 @@
+[
+  {
+    "name": "angular-architect",
+    "description": "Use when building Angular 17+ applications with standalone components or signals. Invoke for enterprise apps, RxJS patterns, NgRx state management, performance optimization, advanced routing.",
+    "triggers": [
+      "Angular",
+      "Angular 17",
+      "standalone components",
+      "signals",
+      "RxJS",
+      "NgRx",
+      "Angular performance",
+      "Angular routing",
+      "Angular testing"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/angular-architect/SKILL.md"
+  },
+  {
+    "name": "api-designer",
+    "description": "Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.",
+    "triggers": [
+      "API design",
+      "REST API",
+      "OpenAPI",
+      "API specification",
+      "API architecture",
+      "resource modeling",
+      "API versioning",
+      "GraphQL schema",
+      "API documentation"
+    ],
+    "role": "architect",
+    "scope": "design",
+    "outputFormat": "specification",
+    "skillPath": "../skills/api-designer/SKILL.md"
+  },
+  {
+    "name": "architecture-designer",
+    "description": "Use when designing new system architecture, reviewing existing designs, or making architectural decisions. Invoke for system design, architecture review, design patterns, ADRs, scalability planning.",
+    "triggers": [
+      "architecture",
+      "system design",
+      "design pattern",
+      "microservices",
+      "scalability",
+      "ADR",
+      "technical design",
+      "infrastructure"
+    ],
+    "role": "expert",
+    "scope": "design",
+    "outputFormat": "document",
+    "skillPath": "../skills/architecture-designer/SKILL.md"
+  },
+  {
+    "name": "atlassian-mcp",
+    "description": "Use when querying Jira issues, searching Confluence pages, creating tickets, updating documentation, or integrating Atlassian tools via MCP protocol.",
+    "triggers": [
+      "Jira",
+      "Confluence",
+      "Atlassian",
+      "MCP",
+      "tickets",
+      "issues",
+      "wiki",
+      "JQL",
+      "CQL",
+      "sprint",
+      "backlog",
+      "project management"
+    ],
+    "role": "expert",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/atlassian-mcp/SKILL.md"
+  },
+  {
+    "name": "backend-patterns",
+    "description": "Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes.",
+    "triggers": [],
+    "skillPath": "../skills/backend-patterns/SKILL.md"
+  },
+  {
+    "name": "chaos-engineer",
+    "description": "Use when designing chaos experiments, implementing failure injection frameworks, or conducting game day exercises. Invoke for chaos experiments, resilience testing, blast radius control, game days, antifragile systems.",
+    "triggers": [
+      "chaos engineering",
+      "resilience testing",
+      "failure injection",
+      "game day",
+      "blast radius",
+      "chaos experiment",
+      "fault injection",
+      "Chaos Monkey",
+      "Litmus Chaos",
+      "antifragile"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/chaos-engineer/SKILL.md"
+  },
+  {
+    "name": "cli-developer",
+    "description": "Use when building CLI tools, implementing argument parsing, or adding interactive prompts. Invoke for CLI design, argument parsing, interactive prompts, progress indicators, shell completions.",
+    "triggers": [
+      "CLI",
+      "command-line",
+      "terminal app",
+      "argument parsing",
+      "shell completion",
+      "interactive prompt",
+      "progress bar",
+      "commander",
+      "click",
+      "typer",
+      "cobra"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/cli-developer/SKILL.md"
+  },
+  {
+    "name": "cloud-architect",
+    "description": "Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.",
+    "triggers": [
+      "AWS",
+      "Azure",
+      "GCP",
+      "Google Cloud",
+      "cloud migration",
+      "cloud architecture",
+      "multi-cloud",
+      "cloud cost",
+      "Well-Architected",
+      "landing zone",
+      "cloud security",
+      "disaster recovery",
+      "cloud native",
+      "serverless architecture"
+    ],
+    "role": "architect",
+    "scope": "infrastructure",
+    "outputFormat": "architecture",
+    "skillPath": "../skills/cloud-architect/SKILL.md"
+  },
+  {
+    "name": "code-documenter",
+    "description": "Use when adding docstrings, creating API documentation, or building documentation sites. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, tutorials, user guides.",
+    "triggers": [
+      "documentation",
+      "docstrings",
+      "OpenAPI",
+      "Swagger",
+      "JSDoc",
+      "comments",
+      "API docs",
+      "tutorials",
+      "user guides",
+      "doc site"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/code-documenter/SKILL.md"
+  },
+  {
+    "name": "code-reviewer",
+    "description": "Use when reviewing pull requests, conducting code quality audits, or identifying security vulnerabilities. Invoke for PR reviews, code quality checks, refactoring suggestions.",
+    "triggers": [
+      "code review",
+      "PR review",
+      "pull request",
+      "review code",
+      "code quality"
+    ],
+    "role": "specialist",
+    "scope": "review",
+    "outputFormat": "report",
+    "skillPath": "../skills/code-reviewer/SKILL.md"
+  },
+  {
+    "name": "coding-standards",
+    "description": "Universal coding standards, best practices, and patterns for TypeScript, JavaScript, React, and Node.js development.",
+    "triggers": [],
+    "skillPath": "../skills/coding-standards/SKILL.md"
+  },
+  {
+    "name": "cpp-pro",
+    "description": "Use when building C++ applications requiring modern C++20/23 features, template metaprogramming, or high-performance systems. Invoke for concepts, ranges, coroutines, SIMD optimization, memory management.",
+    "triggers": [
+      "C++",
+      "C++20",
+      "C++23",
+      "modern C++",
+      "template metaprogramming",
+      "systems programming",
+      "performance optimization",
+      "SIMD",
+      "memory management",
+      "CMake"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/cpp-pro/SKILL.md"
+  },
+  {
+    "name": "csharp-developer",
+    "description": "Use when building C# applications with .NET 8+, ASP.NET Core APIs, or Blazor web apps. Invoke for Entity Framework Core, minimal APIs, async patterns, CQRS with MediatR.",
+    "triggers": [
+      "C#",
+      ".NET",
+      "ASP.NET Core",
+      "Blazor",
+      "Entity Framework",
+      "EF Core",
+      "Minimal API",
+      "MAUI",
+      "SignalR"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/csharp-developer/SKILL.md"
+  },
+  {
+    "name": "database-optimizer",
+    "description": "Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution.",
+    "triggers": [
+      "database optimization",
+      "slow query",
+      "query performance",
+      "database tuning",
+      "index optimization",
+      "execution plan",
+      "EXPLAIN ANALYZE",
+      "database performance",
+      "PostgreSQL optimization",
+      "MySQL optimization"
+    ],
+    "role": "specialist",
+    "scope": "optimization",
+    "outputFormat": "analysis-and-code",
+    "skillPath": "../skills/database-optimizer/SKILL.md"
+  },
+  {
+    "name": "debugging-wizard",
+    "description": "Use when investigating errors, analyzing stack traces, or finding root causes of unexpected behavior. Invoke for error investigation, troubleshooting, log analysis, root cause analysis.",
+    "triggers": [
+      "debug",
+      "error",
+      "bug",
+      "exception",
+      "traceback",
+      "stack trace",
+      "troubleshoot",
+      "not working",
+      "crash",
+      "fix issue"
+    ],
+    "role": "specialist",
+    "scope": "analysis",
+    "outputFormat": "analysis",
+    "skillPath": "../skills/debugging-wizard/SKILL.md"
+  },
+  {
+    "name": "devops-engineer",
+    "description": "Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.",
+    "triggers": [
+      "DevOps",
+      "CI/CD",
+      "deployment",
+      "Docker",
+      "Kubernetes",
+      "Terraform",
+      "GitHub Actions",
+      "infrastructure",
+      "platform engineering",
+      "incident response",
+      "on-call",
+      "self-service"
+    ],
+    "role": "engineer",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/devops-engineer/SKILL.md"
+  },
+  {
+    "name": "django-expert",
+    "description": "Use when building Django web applications or REST APIs with Django REST Framework. Invoke for Django models, ORM optimization, DRF serializers, viewsets, authentication with JWT.",
+    "triggers": [
+      "Django",
+      "DRF",
+      "Django REST Framework",
+      "Django ORM",
+      "Django model",
+      "serializer",
+      "viewset",
+      "Python web"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/django-expert/SKILL.md"
+  },
+  {
+    "name": "dotnet-core-expert",
+    "description": "Use when building .NET 8 applications with minimal APIs, clean architecture, or cloud-native microservices. Invoke for Entity Framework Core, CQRS with MediatR, JWT authentication, AOT compilation.",
+    "triggers": [
+      ".NET Core",
+      ".NET 8",
+      "ASP.NET Core",
+      "C# 12",
+      "minimal API",
+      "Entity Framework Core",
+      "microservices .NET",
+      "CQRS",
+      "MediatR"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/dotnet-core-expert/SKILL.md"
+  },
+  {
+    "name": "embedded-systems",
+    "description": "Use when developing firmware for microcontrollers, implementing RTOS applications, or optimizing power consumption. Invoke for STM32, ESP32, FreeRTOS, bare-metal, power optimization, real-time systems.",
+    "triggers": [
+      "embedded systems",
+      "firmware",
+      "microcontroller",
+      "RTOS",
+      "FreeRTOS",
+      "STM32",
+      "ESP32",
+      "bare metal",
+      "interrupt",
+      "DMA",
+      "real-time"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/embedded-systems/SKILL.md"
+  },
+  {
+    "name": "fastapi-expert",
+    "description": "Use when building high-performance async Python APIs with FastAPI and Pydantic V2. Invoke for async SQLAlchemy, JWT authentication, WebSockets, OpenAPI documentation.",
+    "triggers": [
+      "FastAPI",
+      "Pydantic",
+      "async Python",
+      "Python API",
+      "REST API Python",
+      "SQLAlchemy async",
+      "JWT authentication",
+      "OpenAPI",
+      "Swagger Python"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/fastapi-expert/SKILL.md"
+  },
+  {
+    "name": "feature-forge",
+    "description": "Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements gathering, user stories, EARS format specs.",
+    "triggers": [
+      "requirements",
+      "specification",
+      "feature definition",
+      "user stories",
+      "EARS",
+      "planning"
+    ],
+    "role": "specialist",
+    "scope": "design",
+    "outputFormat": "document",
+    "skillPath": "../skills/feature-forge/SKILL.md"
+  },
+  {
+    "name": "fine-tuning-expert",
+    "description": "Use when fine-tuning LLMs, training custom models, or optimizing model performance for specific tasks. Invoke for parameter-efficient methods, dataset preparation, or model adaptation.",
+    "triggers": [
+      "fine-tuning",
+      "fine tuning",
+      "LoRA",
+      "QLoRA",
+      "PEFT",
+      "adapter tuning",
+      "transfer learning",
+      "model training",
+      "custom model",
+      "LLM training",
+      "instruction tuning",
+      "RLHF",
+      "model optimization",
+      "quantization"
+    ],
+    "role": "expert",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/fine-tuning-expert/SKILL.md"
+  },
+  {
+    "name": "flutter-expert",
+    "description": "Use when building cross-platform applications with Flutter 3+ and Dart. Invoke for widget development, Riverpod/Bloc state management, GoRouter navigation, platform-specific implementations, performance optimization.",
+    "triggers": [
+      "Flutter",
+      "Dart",
+      "widget",
+      "Riverpod",
+      "Bloc",
+      "GoRouter",
+      "cross-platform"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/flutter-expert/SKILL.md"
+  },
+  {
+    "name": "frontend-design",
+    "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use when building web components, pages, or applications requiring exceptional aesthetics and creative direction. Generates polished code that avoids generic patterns.",
+    "triggers": [
+      "frontend design",
+      "UI design",
+      "web design",
+      "creative frontend",
+      "interface design",
+      "visual design",
+      "aesthetic design",
+      "design system",
+      "unique design",
+      "brand identity"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/frontend-design/SKILL.md"
+  },
+  {
+    "name": "fullstack-guardian",
+    "description": "Use when implementing features across frontend and backend, building APIs with UI, or creating end-to-end data flows. Invoke for feature implementation, API development, UI building, cross-stack work.",
+    "triggers": [
+      "fullstack",
+      "implement feature",
+      "build feature",
+      "create API",
+      "frontend and backend",
+      "full stack",
+      "new feature",
+      "implement",
+      "microservices",
+      "websocket",
+      "real-time",
+      "deployment pipeline",
+      "monorepo",
+      "architecture decision",
+      "technology selection",
+      "end-to-end"
+    ],
+    "role": "expert",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/fullstack-guardian/SKILL.md"
+  },
+  {
+    "name": "game-developer",
+    "description": "Use when building game systems, implementing Unity/Unreal features, or optimizing game performance. Invoke for Unity, Unreal, game patterns, ECS, physics, networking, performance optimization.",
+    "triggers": [
+      "Unity",
+      "Unreal Engine",
+      "game development",
+      "ECS architecture",
+      "game physics",
+      "multiplayer networking",
+      "game optimization",
+      "shader programming",
+      "game AI"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/game-developer/SKILL.md"
+  },
+  {
+    "name": "golang-pro",
+    "description": "Use when building Go applications requiring concurrent programming, microservices architecture, or high-performance systems. Invoke for goroutines, channels, Go generics, gRPC integration.",
+    "triggers": [
+      "Go",
+      "Golang",
+      "goroutines",
+      "channels",
+      "gRPC",
+      "microservices Go",
+      "Go generics",
+      "concurrent programming",
+      "Go interfaces"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/golang-pro/SKILL.md"
+  },
+  {
+    "name": "graphql-architect",
+    "description": "Use when designing GraphQL schemas, implementing Apollo Federation, or building real-time subscriptions. Invoke for schema design, resolvers with DataLoader, query optimization, federation directives.",
+    "triggers": [
+      "GraphQL",
+      "Apollo Federation",
+      "GraphQL schema",
+      "API graph",
+      "GraphQL subscriptions",
+      "Apollo Server",
+      "schema design",
+      "GraphQL resolvers",
+      "DataLoader"
+    ],
+    "role": "architect",
+    "scope": "design",
+    "outputFormat": "schema",
+    "skillPath": "../skills/graphql-architect/SKILL.md"
+  },
+  {
+    "name": "java-architect",
+    "description": "Use when building enterprise Java applications with Spring Boot 3.x, microservices, or reactive programming. Invoke for WebFlux, JPA optimization, Spring Security, cloud-native patterns.",
+    "triggers": [
+      "Spring Boot",
+      "Java",
+      "microservices",
+      "Spring Cloud",
+      "JPA",
+      "Hibernate",
+      "WebFlux",
+      "reactive",
+      "Java Enterprise"
+    ],
+    "role": "architect",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/java-architect/SKILL.md"
+  },
+  {
+    "name": "javascript-pro",
+    "description": "Use when building JavaScript applications with modern ES2023+ features, async patterns, or Node.js development. Invoke for vanilla JavaScript, browser APIs, performance optimization, module systems.",
+    "triggers": [
+      "JavaScript",
+      "ES2023",
+      "async await",
+      "Node.js",
+      "vanilla JavaScript",
+      "Web Workers",
+      "Fetch API",
+      "browser API",
+      "module system"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/javascript-pro/SKILL.md"
+  },
+  {
+    "name": "kotlin-specialist",
+    "description": "Use when building Kotlin applications requiring coroutines, multiplatform development, or Android with Compose. Invoke for Flow API, KMP projects, Ktor servers, DSL design, sealed classes.",
+    "triggers": [
+      "Kotlin",
+      "coroutines",
+      "Kotlin Multiplatform",
+      "KMP",
+      "Jetpack Compose",
+      "Ktor",
+      "Flow",
+      "Android Kotlin",
+      "suspend function"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/kotlin-specialist/SKILL.md"
+  },
+  {
+    "name": "kubernetes-specialist",
+    "description": "Use when deploying or managing Kubernetes workloads requiring cluster configuration, security hardening, or troubleshooting. Invoke for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization.",
+    "triggers": [
+      "Kubernetes",
+      "K8s",
+      "kubectl",
+      "Helm",
+      "container orchestration",
+      "pod deployment",
+      "RBAC",
+      "NetworkPolicy",
+      "Ingress",
+      "StatefulSet",
+      "Operator",
+      "CRD",
+      "CustomResourceDefinition",
+      "ArgoCD",
+      "Flux",
+      "GitOps",
+      "Istio",
+      "Linkerd",
+      "service mesh",
+      "multi-cluster",
+      "cost optimization",
+      "VPA",
+      "spot instances"
+    ],
+    "role": "specialist",
+    "scope": "infrastructure",
+    "outputFormat": "manifests",
+    "skillPath": "../skills/kubernetes-specialist/SKILL.md"
+  },
+  {
+    "name": "laravel-specialist",
+    "description": "Use when building Laravel 10+ applications requiring Eloquent ORM, API resources, or queue systems. Invoke for Laravel models, Livewire components, Sanctum authentication, Horizon queues.",
+    "triggers": [
+      "Laravel",
+      "Eloquent",
+      "PHP framework",
+      "Laravel API",
+      "Artisan",
+      "Blade templates",
+      "Laravel queues",
+      "Livewire",
+      "Laravel testing",
+      "Sanctum",
+      "Horizon"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/laravel-specialist/SKILL.md"
+  },
+  {
+    "name": "legacy-modernizer",
+    "description": "Use when modernizing legacy systems, implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades.",
+    "triggers": [
+      "legacy modernization",
+      "strangler fig",
+      "incremental migration",
+      "technical debt",
+      "legacy refactoring",
+      "system migration",
+      "legacy system",
+      "modernize codebase"
+    ],
+    "role": "specialist",
+    "scope": "architecture",
+    "outputFormat": "code+analysis",
+    "skillPath": "../skills/legacy-modernizer/SKILL.md"
+  },
+  {
+    "name": "mcp-developer",
+    "description": "Use when building MCP servers or clients that connect AI systems with external tools and data sources. Invoke for MCP protocol compliance, TypeScript/Python SDKs, resource providers, tool functions.",
+    "triggers": [
+      "MCP",
+      "Model Context Protocol",
+      "MCP server",
+      "MCP client",
+      "Claude integration",
+      "AI tools",
+      "context protocol",
+      "JSON-RPC"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/mcp-developer/SKILL.md"
+  },
+  {
+    "name": "microservices-architect",
+    "description": "Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns. Invoke for service boundaries, DDD, saga patterns, event sourcing, service mesh, distributed tracing.",
+    "triggers": [
+      "microservices",
+      "service mesh",
+      "distributed systems",
+      "service boundaries",
+      "domain-driven design",
+      "event sourcing",
+      "CQRS",
+      "saga pattern",
+      "Kubernetes microservices",
+      "Istio",
+      "distributed tracing"
+    ],
+    "role": "architect",
+    "scope": "system-design",
+    "outputFormat": "architecture",
+    "skillPath": "../skills/microservices-architect/SKILL.md"
+  },
+  {
+    "name": "ml-pipeline",
+    "description": "Use when building ML pipelines, orchestrating training workflows, automating model lifecycle, implementing feature stores, or managing experiment tracking systems.",
+    "triggers": [
+      "ML pipeline",
+      "MLflow",
+      "Kubeflow",
+      "feature engineering",
+      "model training",
+      "experiment tracking",
+      "feature store",
+      "hyperparameter tuning",
+      "pipeline orchestration",
+      "model registry",
+      "training workflow",
+      "MLOps",
+      "model deployment",
+      "data pipeline",
+      "model versioning"
+    ],
+    "role": "expert",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/ml-pipeline/SKILL.md"
+  },
+  {
+    "name": "monitoring-expert",
+    "description": "Use when setting up monitoring systems, logging, metrics, tracing, or alerting. Invoke for dashboards, Prometheus/Grafana, load testing, profiling, capacity planning.",
+    "triggers": [
+      "monitoring",
+      "observability",
+      "logging",
+      "metrics",
+      "tracing",
+      "alerting",
+      "Prometheus",
+      "Grafana",
+      "DataDog",
+      "APM",
+      "performance testing",
+      "load testing",
+      "profiling",
+      "capacity planning",
+      "bottleneck"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/monitoring-expert/SKILL.md"
+  },
+  {
+    "name": "nestjs-expert",
+    "description": "Use when building NestJS applications requiring modular architecture, dependency injection, or TypeScript backend development. Invoke for modules, controllers, services, DTOs, guards, interceptors, TypeORM/Prisma.",
+    "triggers": [
+      "NestJS",
+      "Nest",
+      "Node.js backend",
+      "TypeScript backend",
+      "dependency injection",
+      "controller",
+      "service",
+      "module",
+      "guard",
+      "interceptor"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/nestjs-expert/SKILL.md"
+  },
+  {
+    "name": "nextjs-developer",
+    "description": "Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke for full-stack features, performance optimization, SEO implementation, production deployment.",
+    "triggers": [
+      "Next.js",
+      "Next.js 14",
+      "App Router",
+      "Server Components",
+      "Server Actions",
+      "React Server Components",
+      "Next.js deployment",
+      "Vercel",
+      "Next.js performance"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/nextjs-developer/SKILL.md"
+  },
+  {
+    "name": "pandas-pro",
+    "description": "Use when working with pandas DataFrames, data cleaning, aggregation, merging, or time series analysis. Invoke for data manipulation, missing value handling, groupby operations, or performance optimization.",
+    "triggers": [
+      "pandas",
+      "DataFrame",
+      "data manipulation",
+      "data cleaning",
+      "aggregation",
+      "groupby",
+      "merge",
+      "join",
+      "time series",
+      "data wrangling",
+      "pivot table",
+      "data transformation"
+    ],
+    "role": "expert",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/pandas-pro/SKILL.md"
+  },
+  {
+    "name": "php-pro",
+    "description": "Use when building PHP applications with modern PHP 8.3+ features, Laravel, or Symfony frameworks. Invoke for strict typing, PHPStan level 9, async patterns with Swoole, PSR standards.",
+    "triggers": [
+      "PHP",
+      "Laravel",
+      "Symfony",
+      "Composer",
+      "PHPStan",
+      "PSR",
+      "PHP API",
+      "Eloquent",
+      "Doctrine"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/php-pro/SKILL.md"
+  },
+  {
+    "name": "playwright-expert",
+    "description": "Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testing.",
+    "triggers": [
+      "Playwright",
+      "E2E test",
+      "end-to-end",
+      "browser testing",
+      "automation",
+      "UI testing",
+      "visual testing"
+    ],
+    "role": "specialist",
+    "scope": "testing",
+    "outputFormat": "code",
+    "skillPath": "../skills/playwright-expert/SKILL.md"
+  },
+  {
+    "name": "postgres-pro",
+    "description": "Use when optimizing PostgreSQL queries, configuring replication, or implementing advanced database features. Invoke for EXPLAIN analysis, JSONB operations, extension usage, VACUUM tuning, performance monitoring.",
+    "triggers": [
+      "PostgreSQL",
+      "Postgres",
+      "EXPLAIN ANALYZE",
+      "pg_stat",
+      "JSONB",
+      "streaming replication",
+      "logical replication",
+      "VACUUM",
+      "PostGIS",
+      "pgvector"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/postgres-pro/SKILL.md"
+  },
+  {
+    "name": "prompt-engineer",
+    "description": "Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.",
+    "triggers": [
+      "prompt engineering",
+      "prompt optimization",
+      "chain-of-thought",
+      "few-shot learning",
+      "prompt testing",
+      "LLM prompts",
+      "prompt evaluation",
+      "system prompts",
+      "structured outputs",
+      "prompt design"
+    ],
+    "role": "expert",
+    "scope": "design",
+    "outputFormat": "document",
+    "skillPath": "../skills/prompt-engineer/SKILL.md"
+  },
+  {
+    "name": "python-pro",
+    "description": "Use when building Python 3.11+ applications requiring type safety, async programming, or production-grade patterns. Invoke for type hints, pytest, async/await, dataclasses, mypy configuration.",
+    "triggers": [
+      "Python development",
+      "type hints",
+      "async Python",
+      "pytest",
+      "mypy",
+      "dataclasses",
+      "Python best practices",
+      "Pythonic code"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/python-pro/SKILL.md"
+  },
+  {
+    "name": "rag-architect",
+    "description": "Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation.",
+    "triggers": [
+      "RAG",
+      "retrieval-augmented generation",
+      "vector search",
+      "embeddings",
+      "semantic search",
+      "vector database",
+      "document retrieval",
+      "knowledge base",
+      "context retrieval",
+      "similarity search"
+    ],
+    "role": "architect",
+    "scope": "system-design",
+    "outputFormat": "architecture",
+    "skillPath": "../skills/rag-architect/SKILL.md"
+  },
+  {
+    "name": "rails-expert",
+    "description": "Use when building Rails 7+ web applications with Hotwire, real-time features, or background job processing. Invoke for Active Record optimization, Turbo Frames/Streams, Action Cable, Sidekiq.",
+    "triggers": [
+      "Rails",
+      "Ruby on Rails",
+      "Hotwire",
+      "Turbo Frames",
+      "Turbo Streams",
+      "Action Cable",
+      "Active Record",
+      "Sidekiq",
+      "RSpec Rails"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/rails-expert/SKILL.md"
+  },
+  {
+    "name": "react-expert",
+    "description": "Use when building React 18+ applications requiring component architecture, hooks patterns, or state management. Invoke for Server Components, performance optimization, Suspense boundaries, React 19 features.",
+    "triggers": [
+      "React",
+      "JSX",
+      "hooks",
+      "useState",
+      "useEffect",
+      "useContext",
+      "Server Components",
+      "React 19",
+      "Suspense",
+      "TanStack Query",
+      "Redux",
+      "Zustand",
+      "component",
+      "frontend"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/react-expert/SKILL.md"
+  },
+  {
+    "name": "react-native-expert",
+    "description": "Use when building cross-platform mobile applications with React Native or Expo. Invoke for navigation patterns, platform-specific code, native modules, FlatList optimization.",
+    "triggers": [
+      "React Native",
+      "Expo",
+      "mobile app",
+      "iOS",
+      "Android",
+      "cross-platform",
+      "native module"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/react-native-expert/SKILL.md"
+  },
+  {
+    "name": "rust-engineer",
+    "description": "Use when building Rust applications requiring memory safety, systems programming, or zero-cost abstractions. Invoke for ownership patterns, lifetimes, traits, async/await with tokio.",
+    "triggers": [
+      "Rust",
+      "Cargo",
+      "ownership",
+      "borrowing",
+      "lifetimes",
+      "async Rust",
+      "tokio",
+      "zero-cost abstractions",
+      "memory safety",
+      "systems programming"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/rust-engineer/SKILL.md"
+  },
+  {
+    "name": "salesforce-developer",
+    "description": "Use when developing Salesforce applications, Apex code, Lightning Web Components, SOQL queries, triggers, integrations, or CRM customizations. Invoke for governor limits, bulk processing, platform events, Salesforce DX.",
+    "triggers": [
+      "Salesforce",
+      "Apex",
+      "Lightning Web Components",
+      "LWC",
+      "SOQL",
+      "SOSL",
+      "Visualforce",
+      "Salesforce DX",
+      "governor limits",
+      "triggers",
+      "platform events",
+      "CRM integration",
+      "Sales Cloud",
+      "Service Cloud"
+    ],
+    "role": "expert",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/salesforce-developer/SKILL.md"
+  },
+  {
+    "name": "secure-code-guardian",
+    "description": "Use when implementing authentication/authorization, securing user input, or preventing OWASP Top 10 vulnerabilities. Invoke for authentication, authorization, input validation, encryption, OWASP Top 10 prevention.",
+    "triggers": [
+      "security",
+      "authentication",
+      "authorization",
+      "encryption",
+      "OWASP",
+      "vulnerability",
+      "secure coding",
+      "password",
+      "JWT",
+      "OAuth"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/secure-code-guardian/SKILL.md"
+  },
+  {
+    "name": "security-reviewer",
+    "description": "Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews.",
+    "triggers": [
+      "security review",
+      "vulnerability scan",
+      "SAST",
+      "security audit",
+      "penetration test",
+      "code audit",
+      "security analysis",
+      "infrastructure security",
+      "DevSecOps",
+      "cloud security",
+      "compliance audit"
+    ],
+    "role": "specialist",
+    "scope": "review",
+    "outputFormat": "report",
+    "skillPath": "../skills/security-reviewer/SKILL.md"
+  },
+  {
+    "name": "shopify-expert",
+    "description": "Use when building Shopify themes, apps, custom storefronts, or e-commerce solutions. Invoke for Liquid templating, Storefront API, app development, checkout customization, Shopify Plus features.",
+    "triggers": [
+      "Shopify",
+      "Liquid",
+      "Storefront API",
+      "Shopify Plus",
+      "Hydrogen",
+      "Shopify app",
+      "checkout extensions",
+      "Shopify Functions",
+      "App Bridge",
+      "theme development",
+      "e-commerce",
+      "Polaris"
+    ],
+    "role": "expert",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/shopify-expert/SKILL.md"
+  },
+  {
+    "name": "spark-engineer",
+    "description": "Use when building Apache Spark applications, distributed data processing pipelines, or optimizing big data workloads. Invoke for DataFrame API, Spark SQL, RDD operations, performance tuning, streaming analytics.",
+    "triggers": [
+      "Apache Spark",
+      "PySpark",
+      "Spark SQL",
+      "distributed computing",
+      "big data",
+      "DataFrame API",
+      "RDD",
+      "Spark Streaming",
+      "structured streaming",
+      "data partitioning",
+      "Spark performance",
+      "cluster computing",
+      "data processing pipeline"
+    ],
+    "role": "expert",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/spark-engineer/SKILL.md"
+  },
+  {
+    "name": "spec-miner",
+    "description": "Use when understanding legacy or undocumented systems, creating documentation for existing code, or extracting specifications from implementations. Invoke for legacy analysis, code archaeology, undocumented features.",
+    "triggers": [
+      "reverse engineer",
+      "legacy code",
+      "code analysis",
+      "undocumented",
+      "understand codebase",
+      "existing system"
+    ],
+    "role": "specialist",
+    "scope": "review",
+    "outputFormat": "document",
+    "skillPath": "../skills/spec-miner/SKILL.md"
+  },
+  {
+    "name": "spring-boot-engineer",
+    "description": "Use when building Spring Boot 3.x applications, microservices, or reactive Java applications. Invoke for Spring Data JPA, Spring Security 6, WebFlux, Spring Cloud integration.",
+    "triggers": [
+      "Spring Boot",
+      "Spring Framework",
+      "Spring Cloud",
+      "Spring Security",
+      "Spring Data JPA",
+      "Spring WebFlux",
+      "Microservices Java",
+      "Java REST API",
+      "Reactive Java"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/spring-boot-engineer/SKILL.md"
+  },
+  {
+    "name": "sql-pro",
+    "description": "Use when optimizing SQL queries, designing database schemas, or tuning database performance. Invoke for complex queries, window functions, CTEs, indexing strategies, query plan analysis.",
+    "triggers": [
+      "SQL optimization",
+      "query performance",
+      "database design",
+      "PostgreSQL",
+      "MySQL",
+      "SQL Server",
+      "window functions",
+      "CTEs",
+      "query tuning",
+      "EXPLAIN plan",
+      "database indexing"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/sql-pro/SKILL.md"
+  },
+  {
+    "name": "sre-engineer",
+    "description": "Use when defining SLIs/SLOs, managing error budgets, or building reliable systems at scale. Invoke for incident management, chaos engineering, toil reduction, capacity planning.",
+    "triggers": [
+      "SRE",
+      "site reliability",
+      "SLO",
+      "SLI",
+      "error budget",
+      "incident management",
+      "chaos engineering",
+      "toil reduction",
+      "on-call",
+      "MTTR"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/sre-engineer/SKILL.md"
+  },
+  {
+    "name": "swift-expert",
+    "description": "Use when building iOS/macOS applications with Swift 5.9+, SwiftUI, or async/await concurrency. Invoke for protocol-oriented programming, SwiftUI state management, actors, server-side Swift.",
+    "triggers": [
+      "Swift",
+      "SwiftUI",
+      "iOS development",
+      "macOS development",
+      "async/await Swift",
+      "Combine",
+      "UIKit",
+      "Vapor"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/swift-expert/SKILL.md"
+  },
+  {
+    "name": "tdd-workflow",
+    "description": "Use this skill when writing new features, fixing bugs, or refactoring code. Enforces test-driven development with 80%+ coverage including unit, integration, and E2E tests.",
+    "triggers": [],
+    "skillPath": "../skills/tdd-workflow/SKILL.md"
+  },
+  {
+    "name": "terraform-engineer",
+    "description": "Use when implementing infrastructure as code with Terraform across AWS, Azure, or GCP. Invoke for module development, state management, provider configuration, multi-environment workflows, infrastructure testing.",
+    "triggers": [
+      "Terraform",
+      "infrastructure as code",
+      "IaC",
+      "terraform module",
+      "terraform state",
+      "AWS provider",
+      "Azure provider",
+      "GCP provider",
+      "terraform plan",
+      "terraform apply"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/terraform-engineer/SKILL.md"
+  },
+  {
+    "name": "test-master",
+    "description": "Use when writing tests, creating test strategies, or building automation frameworks. Invoke for unit tests, integration tests, E2E, coverage analysis, performance testing, security testing.",
+    "triggers": [
+      "test",
+      "testing",
+      "QA",
+      "unit test",
+      "integration test",
+      "E2E",
+      "coverage",
+      "performance test",
+      "security test",
+      "regression",
+      "test strategy",
+      "test automation",
+      "test framework",
+      "quality metrics",
+      "defect",
+      "exploratory",
+      "usability",
+      "accessibility",
+      "localization",
+      "manual testing",
+      "shift-left",
+      "quality gate",
+      "flaky test",
+      "test maintenance"
+    ],
+    "role": "specialist",
+    "scope": "testing",
+    "outputFormat": "report",
+    "skillPath": "../skills/test-master/SKILL.md"
+  },
+  {
+    "name": "typescript-pro",
+    "description": "Use when building TypeScript applications requiring advanced type systems, generics, or full-stack type safety. Invoke for type guards, utility types, tRPC integration, monorepo setup.",
+    "triggers": [
+      "TypeScript",
+      "generics",
+      "type safety",
+      "conditional types",
+      "mapped types",
+      "tRPC",
+      "tsconfig",
+      "type guards",
+      "discriminated unions"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/typescript-pro/SKILL.md"
+  },
+  {
+    "name": "vue-expert",
+    "description": "Use when building Vue 3 applications with Composition API, Nuxt 3, or Quasar. Invoke for Pinia, TypeScript, PWA, Capacitor mobile apps, Vite configuration.",
+    "triggers": [
+      "Vue 3",
+      "Composition API",
+      "Nuxt",
+      "Pinia",
+      "Vue composables",
+      "reactive",
+      "ref",
+      "Vue Router",
+      "Vite Vue",
+      "Quasar",
+      "Capacitor",
+      "PWA",
+      "service worker",
+      "Fastify SSR",
+      "sourcemap",
+      "Vite config",
+      "build optimization"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/vue-expert/SKILL.md"
+  },
+  {
+    "name": "vue-expert-js",
+    "description": "Use when building Vue 3 applications with JavaScript only (no TypeScript). Invoke for JSDoc typing, vanilla JS composables, .mjs modules.",
+    "triggers": [
+      "Vue JavaScript",
+      "Vue without TypeScript",
+      "Vue JSDoc",
+      "Vue JS only",
+      "Vue vanilla JavaScript",
+      ".mjs Vue",
+      "Vue no TS"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/vue-expert-js/SKILL.md"
+  },
+  {
+    "name": "websocket-engineer",
+    "description": "Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.",
+    "triggers": [
+      "WebSocket",
+      "Socket.IO",
+      "real-time communication",
+      "bidirectional messaging",
+      "pub/sub",
+      "server push",
+      "live updates",
+      "chat systems",
+      "presence tracking"
+    ],
+    "role": "specialist",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/websocket-engineer/SKILL.md"
+  },
+  {
+    "name": "wordpress-pro",
+    "description": "Use when developing WordPress themes, plugins, customizing Gutenberg blocks, implementing WooCommerce features, or optimizing WordPress performance and security.",
+    "triggers": [
+      "WordPress",
+      "WooCommerce",
+      "Gutenberg",
+      "WordPress theme",
+      "WordPress plugin",
+      "custom blocks",
+      "ACF",
+      "WordPress REST API",
+      "hooks",
+      "filters",
+      "WordPress performance",
+      "WordPress security"
+    ],
+    "role": "expert",
+    "scope": "implementation",
+    "outputFormat": "code",
+    "skillPath": "../skills/wordpress-pro/SKILL.md"
+  }
+]

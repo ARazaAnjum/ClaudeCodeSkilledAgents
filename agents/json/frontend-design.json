@@ -1,0 +1,20 @@
+{
+  "name": "frontend-design",
+  "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use when building web components, pages, or applications requiring exceptional aesthetics and creative direction. Generates polished code that avoids generic patterns.",
+  "triggers": [
+    "frontend design",
+    "UI design",
+    "web design",
+    "creative frontend",
+    "interface design",
+    "visual design",
+    "aesthetic design",
+    "design system",
+    "unique design",
+    "brand identity"
+  ],
+  "role": "specialist",
+  "scope": "implementation",
+  "outputFormat": "code",
+  "skillPath": "../skills/frontend-design/SKILL.md"
+}

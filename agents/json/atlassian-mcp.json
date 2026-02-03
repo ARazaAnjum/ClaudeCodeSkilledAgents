@@ -1,0 +1,22 @@
+{
+  "name": "atlassian-mcp",
+  "description": "Use when querying Jira issues, searching Confluence pages, creating tickets, updating documentation, or integrating Atlassian tools via MCP protocol.",
+  "triggers": [
+    "Jira",
+    "Confluence",
+    "Atlassian",
+    "MCP",
+    "tickets",
+    "issues",
+    "wiki",
+    "JQL",
+    "CQL",
+    "sprint",
+    "backlog",
+    "project management"
+  ],
+  "role": "expert",
+  "scope": "implementation",
+  "outputFormat": "code",
+  "skillPath": "../skills/atlassian-mcp/SKILL.md"
+}

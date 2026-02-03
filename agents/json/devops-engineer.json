@@ -1,0 +1,22 @@
+{
+  "name": "devops-engineer",
+  "description": "Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.",
+  "triggers": [
+    "DevOps",
+    "CI/CD",
+    "deployment",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "GitHub Actions",
+    "infrastructure",
+    "platform engineering",
+    "incident response",
+    "on-call",
+    "self-service"
+  ],
+  "role": "engineer",
+  "scope": "implementation",
+  "outputFormat": "code",
+  "skillPath": "../skills/devops-engineer/SKILL.md"
+}
