@@ -7,18 +7,18 @@ A comprehensive collection of production-grade AI skills covering frontend, back
 [![Skills](https://img.shields.io/badge/Skills-69-blue)](skills/)
 [![Agents](https://img.shields.io/badge/Agents-138-green)](agents/)
 [![References](https://img.shields.io/badge/References-356-orange)](skills/)
-[![npm](https://img.shields.io/badge/npm-claudecode--skills-red)](https://www.npmjs.com/package/claudecode-skills)
+[![npm](https://img.shields.io/badge/npm-ai--workflow--skills-red)](https://www.npmjs.com/package/ai-workflow-skills)
 
 ---
 
-## 📦 NPM Package — `claudecode-skills`
+## 📦 NPM Package — `ai-workflow-skills`
 
 Install the CLI globally and scaffold any project in seconds — copy the base rules and your chosen skills directly into your working directory.
 
 ### Install
 
 ```bash
-npm install -g claudecode-skills
+npm install -g ai-workflow-skills
 ```
 
 ### Usage

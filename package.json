@@ -1,5 +1,5 @@
 {
-  "name": "claudecode-skills",
+  "name": "ai-workflow-skills",
   "version": "1.0.1",
   "description": "Interactive CLI to copy ClaudeCode skills into any project",
   "bin": {
