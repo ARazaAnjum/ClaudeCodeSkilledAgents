@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "WebFetch(domain:stitch.withgoogle.com)",
+      "WebFetch(domain:seranovabeauty.com)",
+      "Bash(tree:*)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "claudecode-skills"
+  ]
 }
