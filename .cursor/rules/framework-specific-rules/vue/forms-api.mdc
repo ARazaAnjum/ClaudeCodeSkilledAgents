@@ -1,0 +1,218 @@
+---
+description: Vue.js form handling patterns and API integration
+globs: ["resources/js/components/**/*.vue", "resources/views/**/*.blade.php"]
+---
+
+# Vue.js Forms and API Integration
+
+## Form Handling (REQUIRED)
+```javascript
+// ALWAYS use this form handling pattern
+export default {
+  data() {
+    return {
+      form: {
+        name: '',
+        email: ''
+      },
+      errors: {},
+      loading: false
+    }
+  },
+  
+  methods: {
+    // ALWAYS validate forms
+    validateForm() {
+      this.errors = {};
+      
+      if (!this.form.name) {
+        this.errors.name = 'Name is required';
+      }
+      
+      if (!this.form.email) {
+        this.errors.email = 'Email is required';
+      }
+      
+      return Object.keys(this.errors).length === 0;
+    },
+    
+    // ALWAYS handle form submission
+    async onSubmit() {
+      if (!this.validateForm()) {
+        return;
+      }
+      
+      this.loading = true;
+      
+      try {
+        await this.apiCall('/api/submit', {
+          method: 'POST',
+          data: this.form
+        });
+        
+        this.$toast.success('Form submitted successfully');
+        this.resetForm();
+      } catch (error) {
+        // Handle validation errors from backend
+        if (error.response?.status === 422) {
+          this.errors = error.response.data.errors || {};
+        }
+      } finally {
+        this.loading = false;
+      }
+    },
+    
+    // ALWAYS provide form reset
+    resetForm() {
+      this.form = {
+        name: '',
+        email: ''
+      };
+      this.errors = {};
+    },
+    
+    // ALWAYS provide field state helpers
+    getFieldState(field) {
+      return this.errors[field] ? false : null;
+    },
+    
+    getFieldError(field) {
+      return this.errors[field] ? this.errors[field][0] || this.errors[field] : '';
+    }
+  }
+}
+```
+
+## Bootstrap Vue Form Integration (MANDATORY)
+```vue
+<template>
+  <!-- ALWAYS use Bootstrap Vue components -->
+  <b-container>
+    <b-row>
+      <b-col cols="12" md="8">
+        <b-form @submit.prevent="onSubmit">
+          <b-form-group label="Name" label-for="name">
+            <b-form-input
+              id="name"
+              v-model="form.name"
+              :state="getFieldState('name')"
+              required
+            />
+            <b-form-invalid-feedback>
+              {{ getFieldError('name') }}
+            </b-form-invalid-feedback>
+          </b-form-group>
+          
+          <b-button type="submit" variant="primary" :disabled="loading">
+            <b-spinner v-if="loading" small class="mr-2" />
+            Submit
+          </b-button>
+        </b-form>
+      </b-col>
+    </b-row>
+  </b-container>
+</template>
+```
+
+## API Integration (REQUIRED PATTERN)
+```javascript
+// ALWAYS use this API service pattern
+export default {
+  methods: {
+    async apiCall(endpoint, options = {}) {
+      try {
+        // ALWAYS show loading state
+        this.loading = true;
+        
+        // ALWAYS include tenant headers
+        const config = {
+          headers: {
+            'X-Tenant-ID': window.Laravel.team_id,
+            'X-User-ID': window.Laravel.user_id,
+            ...options.headers
+          },
+          ...options
+        };
+        
+        const response = await axios.get(endpoint, config);
+        
+        // ALWAYS handle API response format
+        if (response.data.success) {
+          return response.data.data;
+        } else {
+          throw new Error(response.data.message || 'API call failed');
+        }
+      } catch (error) {
+        // ALWAYS handle errors gracefully
+        const message = error.response?.data?.message || error.message || 'Request failed';
+        this.$toast.error(message);
+        console.error('API Error:', error);
+        throw error;
+      } finally {
+        // ALWAYS hide loading state
+        this.loading = false;
+      }
+    }
+  }
+}
+```
+
+## Error Handling (MANDATORY)
+```javascript
+// ALWAYS implement global error handling
+export default {
+  methods: {
+    handleError(error, context = '') {
+      // ALWAYS log errors
+      console.error(`Error in ${context}:`, error);
+      
+      // ALWAYS show user-friendly messages
+      const message = this.getErrorMessage(error);
+      this.$toast.error(message);
+      
+      // ALWAYS report critical errors
+      if (error.status >= 500) {
+        this.reportError(error, context);
+      }
+    },
+    
+    getErrorMessage(error) {
+      // ALWAYS provide fallback messages
+      if (error.response?.data?.message) {
+        return error.response.data.message;
+      }
+      
+      if (error.message) {
+        return error.message;
+      }
+      
+      return 'An unexpected error occurred';
+    }
+  }
+}
+```
+
+## Event Handling (STRICT RULES)
+```javascript
+// ALWAYS use this event pattern
+methods: {
+  onItemClick(item) {
+    // ALWAYS emit custom events
+    this.$emit('item-selected', {
+      item: item,
+      timestamp: Date.now(),
+      source: 'user-click'
+    });
+  },
+  
+  onFormSubmit(event) {
+    // ALWAYS prevent default when needed
+    event.preventDefault();
+    
+    // ALWAYS validate before emitting
+    if (this.validateForm()) {
+      this.$emit('form-submitted', this.form);
+    }
+  }
+}
+```

@@ -1,0 +1,33 @@
+---
+description: Vue 2 + Options API coding conventions and naming rules
+globs: ["resources/js/**/*.vue", "resources/views/**/*.blade.php"]
+---
+
+## Frontend Stack
+- Framework: **Vue 2**
+- Style: **Options API** (no Composition API)
+- Vue components live under `resources/js/components` and are mounted in Blade templates.
+
+## Naming Conventions
+- **Variables/constants**: must have **meaningful names**.
+  - ❌ Avoid single letters like `r`, `i`, `e`.
+  - ✅ Use descriptive names like `responseData`, `projectId`, `isVisible`.
+- **Methods**: must be **UpperCamelCase** (e.g., `LoadProjects`, `HandleSubmit`).
+- **Data properties**: must be **UpperCamelCase** (e.g., `ProjectName`, `CompanyList`).
+- **Props**: use **camelCase** when declared in Vue, but kebab-case in templates (`<my-component :project-name="ProjectName" />`).
+
+## Options API Only
+- Use `data()`, `methods`, `computed`, `watch`.
+- Do not use Vue 3 Composition API (`setup()`, `ref`, `reactive`, etc.).
+
+## Axios & State
+- Axios requests handled in methods (e.g., `LoadProjects`) with clear naming.
+- Errors caught and assigned to meaningful data props (`ErrorMessage`, not `err`).
+- Local component state only, unless explicitly shared via event bus/Vuex.
+
+## Components & Events
+- **Filenames**: kebab-case (e.g., `project-list.vue`)
+- **Tags in templates**: kebab-case (e.g., `<project-list />`)
+- **Props**: declare in JS as camelCase, use in templates as kebab-case (`projectId` → `:project-id`)
+- **Custom events**: emit and listen in **kebab-case** (`'project-updated'`, `'project-live'`)
+- **Event handlers (methods)**: **UpperCamelCase** (e.g., `HandleProjectUpdated`)

@@ -1,0 +1,332 @@
+---
+description: Vue.js component patterns and implementation examples
+globs: ["resources/js/components/**/*.vue", "resources/views/**/*.blade.php"]
+---
+
+# Vue.js Component Patterns
+
+## Component Structure (MANDATORY TEMPLATE)
+```vue
+<template>
+  <div class="component-name">
+    <!-- ALWAYS use semantic HTML -->
+    <!-- ALWAYS add loading states -->
+    <div v-if="loading" class="loading-spinner">
+      <i class="fa fa-spinner fa-spin"></i> Loading...
+    </div>
+    
+    <!-- ALWAYS handle empty states -->
+    <div v-else-if="!items.length" class="empty-state">
+      No items found
+    </div>
+    
+    <!-- ALWAYS use v-for with :key -->
+    <div v-else>
+      <div v-for="item in items" :key="item.id" class="item">
+        {{ item.name }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ComponentName', // ALWAYS provide component name
+  
+  components: {
+    // ALWAYS register local components
+  },
+  
+  props: {
+    // ALWAYS validate props from Blade templates
+    user: {
+      type: Object,
+      required: true
+    },
+    team: {
+      type: Object,
+      required: true
+    },
+    canEdit: {
+      type: [Boolean, String],
+      default: false
+    },
+    canDelete: {
+      type: [Boolean, String], 
+      default: false
+    },
+    userRole: {
+      type: String,
+      required: true
+    },
+    fieldLabels: {
+      type: Object,
+      default: () => ({})
+    },
+    masks: {
+      type: Object,
+      default: () => ({})
+    },
+    symbols: {
+      type: Object,
+      default: () => ({})
+    },
+    // ALWAYS add specific component props
+    data: {
+      type: [Object, Array],
+      default: () => ({})
+    }
+  },
+  
+  data() {
+    return {
+      // ALWAYS initialize reactive data
+      items: [],
+      loading: false,
+      error: null
+    }
+  },
+  
+  computed: {
+    // ALWAYS use computed for derived data
+    filteredItems() {
+      return this.items.filter(item => item.active);
+    }
+  },
+  
+  watch: {
+    // ALWAYS use watchers for side effects
+    '$route'(to, from) {
+      this.fetchData();
+    }
+  },
+  
+  created() {
+    // ALWAYS initialize component state
+  },
+  
+  mounted() {
+    // ALWAYS fetch initial data
+    this.fetchData();
+  },
+  
+  methods: {
+    // ALWAYS implement error handling
+    async fetchData() {
+      this.loading = true;
+      this.error = null;
+      
+      try {
+        const response = await this.$http.get('/api/data');
+        this.items = response.data.data;
+      } catch (error) {
+        this.error = 'Failed to load data';
+        this.$toast.error(this.error);
+        console.error('Fetch error:', error);
+      } finally {
+        this.loading = false;
+      }
+    }
+  },
+  
+  destroyed() {
+    // ALWAYS cleanup resources
+  }
+}
+</script>
+
+<style scoped>
+/* ALWAYS use scoped styles */
+.component-name {
+  /* ALWAYS follow BEM methodology */
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #666;
+  padding: 40px 20px;
+}
+</style>
+```
+
+## Laravel-Vue Data Handling (REQUIRED)
+```javascript
+// ALWAYS handle Laravel boolean strings in Vue
+export default {
+  computed: {
+    // ALWAYS convert string booleans from Laravel
+    canEditBoolean() {
+      return this.canEdit === true || this.canEdit === 'true';
+    },
+    
+    canDeleteBoolean() {
+      return this.canDelete === true || this.canDelete === 'true';
+    }
+  },
+  
+  methods: {
+    // ALWAYS use helper functions for common Laravel data
+    hasPermission(permission) {
+      return this.userRole === 'owner' || this.userRole === 'admin' || 
+             this.team.permissions?.includes(permission);
+    },
+    
+    // ALWAYS access Laravel helper data properly
+    getFieldLabel(field) {
+      return this.fieldLabels[field] || field;
+    },
+    
+    // ALWAYS format data using Laravel masks/symbols
+    formatCurrency(amount) {
+      return this.symbols.currency + amount.toFixed(2);
+    }
+  }
+}
+```
+
+## Computed Properties Optimization (CRITICAL)
+```javascript
+// ALWAYS use computed for expensive operations
+export default {
+  computed: {
+    // ALWAYS cache expensive filtering/mapping operations
+    computedFollowUpFieldsOptions() {
+      return this.followUpFieldsOptions.map(group => ({
+        label: group.label,
+        options: group.options.map(option => ({
+          value: {
+            value: option.value,
+            label: option.label,
+            object_type: option.object_type,
+            is_custom_field: option.is_custom_field ?? 0,
+            fieldType: option.fieldType ?? null,
+            dropdownOptions: this.getDropdownOptionsForComputed(option),
+          },
+          label: option.label,
+          disabled: this.isFieldDisabled(this.fieldMappingData, option),
+        }))
+      }));
+    },
+    
+    // ALWAYS use computed for derived state
+    filteredItems() {
+      return this.items.filter(item => item.active);
+    }
+  }
+}
+```
+
+## Event Bus Pattern (REQUIRED)
+```javascript
+// ALWAYS use event bus for cross-component communication
+export default {
+  mounted() {
+    // ALWAYS listen to bus events
+    Bus.$on('vistaConnectionDataChanged', data => {
+      this.vistaProjectConnectionData = data;
+    });
+  },
+  
+  beforeDestroy() {
+    // ALWAYS clean up event listeners
+    Bus.$off('vistaConnectionDataChanged');
+  },
+  
+  methods: {
+    updateData() {
+      // ALWAYS emit events for other components
+      Bus.$emit('dataUpdated', this.newData);
+    }
+  }
+}
+```
+
+## Lifecycle Management (MANDATORY)
+```javascript
+// ALWAYS clean up resources in beforeDestroy
+export default {
+  mounted() {
+    // ALWAYS add event listeners
+    document.addEventListener('click', this.handleClickOutside);
+    
+    // ALWAYS initialize tooltips/plugins
+    $('[data-toggle="tooltip"]').tooltip();
+  },
+  
+  beforeDestroy() {
+    // ALWAYS remove event listeners
+    document.removeEventListener('click', this.handleClickOutside);
+    
+    // ALWAYS clean up intervals/timeouts
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
+}
+```
+
+## Mixins Pattern (REQUIRED)
+```javascript
+// ALWAYS create mixins for common functionality
+// resources/js/components/lists/mixin.js
+export default {
+  data() {
+    return {
+      uri: ''
+    };
+  },
+  
+  methods: {
+    saveList(form) {
+      form = this.filterCustomFields(form);
+      // Common save logic
+    },
+    
+    filterCustomFields(form) {
+      // Common filtering logic
+      return form;
+    }
+  }
+}
+
+// ALWAYS use mixins in components
+import Mixin from './mixin';
+
+export default {
+  mixins: [Mixin],
+  // Component-specific logic
+}
+```
+
+## Global Component Registration (REQUIRED)
+```javascript
+// ALWAYS auto-register components globally in app.js
+const files = require.context("./", true, /\.vue$/i);
+files.keys().map(key =>
+  Vue.component(
+    key
+      .split("/")
+      .pop()
+      .split(".")[0],
+    files(key).default
+  )
+);
+
+// ALWAYS add global prototype methods
+Vue.prototype.flash = (text, type) => {
+  Bus.$emit("flash-message", { text, type: type || "success" });
+};
+
+Vue.prototype.getSafe = (fn) => {
+  try {
+    return fn();
+  } catch (error) {
+    return "";
+  }
+};
+```

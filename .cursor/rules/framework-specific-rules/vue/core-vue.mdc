@@ -1,0 +1,115 @@
+---
+alwaysApply: true
+---
+## Code Organization (STRICT)
+```
+resources/js/
+├── components/
+│   ├── automation/          # ALWAYS group by feature
+│   ├── company/             # ALWAYS separate by domain
+│   ├── contact/             # ALWAYS organize by business area
+│   ├── project/             # ALWAYS group related components
+│   ├── shared/              # ALWAYS create shared components
+│   ├── settings/            # ALWAYS separate settings components
+│   └── lists/               # ALWAYS group by functionality
+├── utils/                   # ALWAYS create utility functions
+├── mixins/                  # ALWAYS create reusable mixins
+└── spark-components/        # ALWAYS separate third-party extensions
+```
+
+# Core Vue.js Development Rules
+
+## Vue.js 2.x Standards (ALWAYS ENFORCE)
+- ALWAYS use Single File Components (.vue files)
+- ALWAYS use PascalCase for component names
+- ALWAYS use kebab-case for component file names
+- ALWAYS implement proper component structure
+- ALWAYS use scoped styles to prevent CSS conflicts
+- ALWAYS validate props with proper types
+
+## Blade Template Integration (CRITICAL)
+- ALWAYS embed Vue components within Blade templates (not SPA)
+- ALWAYS pass Laravel data to Vue components via props
+- ALWAYS use json_encode() for complex data structures
+- ALWAYS use proper boolean conversion for Laravel booleans
+- ALWAYS extend Spark layouts for consistent structure
+
+## Laravel Data Passing (MANDATORY)
+- ALWAYS pass complex objects with json_encode
+- ALWAYS convert Laravel booleans properly
+- ALWAYS pass user and team context
+- ALWAYS pass helper function results
+
+## Laravel-Vue Data Handling (REQUIRED)
+- ALWAYS handle Laravel boolean strings in Vue
+- ALWAYS use helper functions for common Laravel data
+- ALWAYS access Laravel helper data properly
+- ALWAYS format data using Laravel masks/symbols
+
+## Component Structure (MANDATORY TEMPLATE)
+- ALWAYS use semantic HTML
+- ALWAYS add loading states
+- ALWAYS handle empty states
+- ALWAYS use v-for with :key
+- ALWAYS provide component name
+- ALWAYS register local components
+- ALWAYS validate props from Blade templates
+- ALWAYS initialize reactive data
+- ALWAYS use computed for derived data
+- ALWAYS use watchers for side effects
+- ALWAYS initialize component state
+- ALWAYS fetch initial data
+- ALWAYS implement error handling
+- ALWAYS cleanup resources
+
+## Performance Rules (CRITICAL)
+- ALWAYS use `v-show` for frequently toggled elements
+- ALWAYS use `v-if` for conditionally rendered elements
+- ALWAYS implement pagination for large datasets
+- ALWAYS debounce search inputs and API calls (500-800ms delay)
+- ALWAYS lazy load large components with dynamic imports
+- ALWAYS use `keep-alive` for expensive components that switch frequently
+- ALWAYS cancel previous API requests when making new ones
+- ALWAYS optimize bundle size with code splitting
+
+## Bootstrap Vue Integration (MANDATORY)
+- ALWAYS use Bootstrap Vue components instead of plain HTML
+- ALWAYS use Bootstrap Vue's grid system
+- ALWAYS implement responsive design
+- ALWAYS use Bootstrap Vue's form components
+- ALWAYS use Bootstrap Vue's modal and toast components
+
+## Event Handling (STRICT RULES)
+- ALWAYS use kebab-case for custom events
+- ALWAYS emit events for parent communication
+- ALWAYS provide event payload with meaningful data
+- ALWAYS document custom events in component comments
+- ALWAYS prevent default behavior when needed
+
+## State Management (REQUIRED)
+- ALWAYS use component data for local state
+- ALWAYS use props for parent-child data flow
+- ALWAYS use events for child-parent communication
+- ALWAYS use provide/inject for deep component trees
+- ALWAYS implement proper reactivity
+
+## Accessibility (REQUIRED)
+- ALWAYS add proper ARIA labels
+- ALWAYS implement keyboard navigation
+- ALWAYS provide alt text for images
+- ALWAYS use semantic HTML elements
+- ALWAYS ensure proper color contrast
+
+## Testing Requirements (MANDATORY)
+- ALWAYS write unit tests for components
+- ALWAYS test component props and events
+- ALWAYS mock API calls in tests
+- ALWAYS test user interactions
+- ALWAYS test error scenarios
+
+## Security Rules (NON-NEGOTIABLE)
+- ALWAYS sanitize user input before display
+- ALWAYS validate data from APIs
+- ALWAYS use HTTPS for all API calls
+- ALWAYS implement proper CSRF protection
+- ALWAYS avoid storing sensitive data in localStorage

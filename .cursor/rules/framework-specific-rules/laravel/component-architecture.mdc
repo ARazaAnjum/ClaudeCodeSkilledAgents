@@ -1,0 +1,99 @@
+---
+description: Laravel Component architecture pattern for business logic
+globs: ["app/Components/**/*.php", "app/Http/Controllers/**/*.php"]
+---
+
+# Laravel Component Architecture
+
+## Component Architecture (MANDATORY)
+- ALWAYS use Component classes for complex business logic
+- ALWAYS make Components static and reusable across controllers
+- ALWAYS group Components by feature/domain
+- ALWAYS use Components for data aggregation and processing
+- ALWAYS return structured arrays or collections from Components
+
+```php
+// ALWAYS follow this Component pattern
+class AutomationComponent 
+{
+    // ALWAYS use static methods for stateless operations
+    public static function getData(): array
+    {
+        // ALWAYS filter by team/tenant
+        $companies = team()->companies()->whereNull('deleted_at')->pluck('id')->toArray();
+        
+        // ALWAYS process and structure data
+        $customFields = team()->projectCustomFields()->where('enabled', 1)->get();
+        
+        $processedData = [];
+        foreach ($customFields as $field) {
+            $processedData[] = [
+                'id' => $field->id,
+                'name' => $field->label_value,
+                'type' => self::mapFieldType($field->type),
+                'options' => self::getFieldOptions($field)
+            ];
+        }
+        
+        return $processedData;
+    }
+    
+    // ALWAYS create helper methods for complex logic
+    private static function mapFieldType(string $type): string
+    {
+        return match($type) {
+            ProjectCustomFieldValue::DROPDOWN => 'dropdown',
+            ProjectCustomFieldValue::USER => 'user',
+            ProjectCustomFieldValue::DATE => 'date',
+            default => 'text'
+        };
+    }
+    
+    // ALWAYS handle resource processing in Components
+    private static function getFieldOptions($field): array
+    {
+        return $field->options()->get()->map(function($option) {
+            return [
+                'id' => $option->id,
+                'value' => $option->value,
+                'label' => $option->label
+            ];
+        })->toArray();
+    }
+}
+```
+
+## Controller + Component Integration (REQUIRED)
+```php
+// ALWAYS use Components in Controllers for complex logic
+class AutomationController extends Controller
+{
+    public function index(Request $request): JsonResponse
+    {
+        try {
+            // ALWAYS validate tenant access
+            $this->authorize('viewAny', Automation::class);
+            
+            // ALWAYS use Components for data processing
+            $automationData = AutomationComponent::getData();
+            $conditionData = AutomationConditionComponent::getConditions();
+            
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'automations' => $automationData,
+                    'conditions' => $conditionData
+                ]
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Automation data fetch failed: ' . $e->getMessage());
+            
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to fetch automation data',
+                'error' => app()->environment('local') ? $e->getMessage() : null
+            ], 500);
+        }
+    }
+}
+```

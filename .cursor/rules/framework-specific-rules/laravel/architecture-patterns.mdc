@@ -1,0 +1,153 @@
+---
+alwaysApply: true
+---
+# Laravel Architecture Patterns
+
+## Dependency Injection (MANDATORY)
+- ALWAYS use constructor dependency injection
+- ALWAYS type-hint dependencies in constructors
+- ALWAYS use private/protected properties for injected dependencies
+- ALWAYS register services in AppServiceProvider when needed
+- ALWAYS use interfaces for better testability and flexibility
+
+## Code Organization (STRICT)
+```
+app/
+├── Components/              # ALWAYS use Components for complex business logic
+│   ├── Automation/          # ALWAYS group by feature/domain
+│   ├── Proposal/            # ALWAYS separate by business area
+│   └── [Feature]/           # ALWAYS organize by functionality
+├── Http/Controllers/Api/    # ALWAYS separate API controllers
+├── Http/Resources/          # ALWAYS use API resources
+├── Http/Requests/          # ALWAYS use form requests
+├── Services/               # ALWAYS implement service layer
+├── Repositories/           # ALWAYS use repository pattern
+├── Policies/               # ALWAYS implement authorization
+└── Jobs/                   # ALWAYS use jobs for async tasks
+```
+
+```php
+// ALWAYS use constructor dependency injection
+class ProjectController extends Controller
+{
+    public function __construct(
+        private ProjectService $projectService,
+        private ProjectCacheService $cacheService,
+        private PerformanceMonitoringService $performanceService
+    ) {}
+
+    public function index(Request $request): JsonResponse
+    {
+        // Use injected dependencies
+        $startTime = microtime(true);
+
+        try {
+            $projects = $this->projectService->getOptimizedListing($request);
+
+            $this->performanceService->recordMetric('project_listing_time',
+                microtime(true) - $startTime
+            );
+
+            return response()->json([
+                'success' => true,
+                'data' => ProjectOptimizedResource::collection($projects)
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Project listing failed: ' . $e->getMessage());
+            throw $e;
+        }
+    }
+}
+```
+
+## Service Layer Pattern (MANDATORY)
+```php
+// ALWAYS create service classes with dependency injection
+class ProjectService
+{
+    public function __construct(
+        private ProjectRepository $repository,
+        private ProjectCacheService $cacheService,
+        private ProjectQueryOptimizationService $queryOptimizer
+    ) {}
+
+    public function getOptimizedListing(Request $request): LengthAwarePaginator
+    {
+        // ALWAYS validate permissions
+        Gate::authorize('viewAny', Project::class);
+
+        // Use injected dependencies
+        $cacheKey = $this->cacheService->generateCacheKey($request->all());
+
+        return $this->cacheService->remember($cacheKey, function() use ($request) {
+            return $this->queryOptimizer->getOptimizedQuery($request)
+                ->paginate($request->per_page ?? 25);
+        });
+    }
+}
+```
+
+## Repository Pattern with DI (REQUIRED)
+```php
+// ALWAYS use dependency injection in repositories
+class ProjectRepository
+{
+    public function __construct(
+        private Project $model,
+        private Builder $queryBuilder
+    ) {}
+
+    public function getOptimizedQuery(array $filters = []): Builder
+    {
+        return $this->model->newQuery()
+            ->with($this->getEagerLoadRelations())
+            ->when($filters['search'] ?? null, fn($q) => $q->search($filters['search']))
+            ->when($filters['status'] ?? null, fn($q) => $q->where('status', $filters['status']))
+            ->forTeam(auth()->user()->current_team_id);
+    }
+
+    private function getEagerLoadRelations(): array
+    {
+        return [
+            'company:id,name',
+            'assignedUser:id,name,email',
+            'projectType:id,name'
+        ];
+    }
+}
+```
+
+## Interface-Based Dependency Injection (BEST PRACTICE)
+```php
+// ALWAYS define interfaces for better testability
+interface ProjectServiceInterface
+{
+    public function getOptimizedListing(Request $request): LengthAwarePaginator;
+    public function createProject(array $data): Project;
+    public function updateProject(Project $project, array $data): Project;
+}
+
+// ALWAYS implement interfaces
+class ProjectService implements ProjectServiceInterface
+{
+    public function __construct(
+        private ProjectRepositoryInterface $repository,
+        private CacheServiceInterface $cacheService,
+        private ValidationServiceInterface $validator
+    ) {}
+
+    // Implementation methods...
+}
+
+// ALWAYS bind interfaces in AppServiceProvider
+class AppServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        $this->app->bind(ProjectServiceInterface::class, ProjectService::class);
+        $this->app->bind(ProjectRepositoryInterface::class, ProjectRepository::class);
+        $this->app->singleton(ProjectCacheService::class);
+        $this->app->singleton(PerformanceMonitoringService::class);
+    }
+}
+```

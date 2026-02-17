@@ -1,0 +1,51 @@
+
+# Vue.js Frontend Development Rules
+
+This file serves as a reference for the distributed Vue.js frontend rules. The rules are organized into focused files for better maintainability and context-specific application.
+
+## Rule Files Overview
+
+### Core Rules (Always Applied)
+- **core-vue.mdc** - Fundamental Vue.js standards, conventions, and integration patterns
+
+### Component Development
+- **component-patterns.mdc** - Component structure, patterns, and implementation examples
+- **performance-patterns.mdc** - Performance optimization and advanced patterns
+- **forms-api.mdc** - Form handling, API integration, and error handling
+
+### Integration Patterns
+- **blade-integration.mdc** - Laravel Blade + Vue.js integration patterns
+
+## Quick Reference
+
+### Essential Patterns
+- Use Single File Components (.vue files) with proper structure
+- Implement Blade + Vue integration with json_encode for data passing
+- Handle Laravel boolean strings properly in Vue components
+- Use Bootstrap Vue components for consistent UI
+- Implement proper error handling and loading states
+- Use computed properties for expensive operations
+- Implement pagination and lazy loading for performance
+- Use event bus for cross-component communication
+- Follow proper lifecycle management and cleanup
+
+### File Organization
+```
+resources/js/
+├── components/          # Vue components organized by feature
+├── utils/              # Utility functions and helpers
+├── mixins/             # Reusable component mixins
+└── app.js              # Main application entry point
+
+resources/views/
+└── [feature]/          # Blade templates with Vue component integration
+```
+
+### Key Integration Points
+- Pass Laravel data via props with proper boolean conversion
+- Use team/tenant context for multi-tenant applications
+- Implement proper permission handling
+- Use helper functions for common data formatting
+- Handle API responses consistently
+
+For detailed rules and examples, refer to the specific rule files based on your current development context.

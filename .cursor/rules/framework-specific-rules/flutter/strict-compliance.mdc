@@ -1,0 +1,267 @@
+---
+alwaysApply: true
+---
+# 🚨 STRICT COMPLIANCE ENFORCEMENT - ZERO TOLERANCE 🚨
+
+**🚨 AUTOMATIC ENFORCEMENT FOR EVERY SINGLE CODE INTERACTION**
+
+## **🚨 IMMEDIATE REJECTION PATTERNS**
+
+### **❌ MVVM VIOLATIONS - INSTANT REJECTION:**
+```dart
+// ❌ FORBIDDEN: setState in UI
+class BadScreen extends StatefulWidget {
+  void _handleAction() {
+    setState(() {}); // INSTANT REJECTION
+  }
+}
+
+// ❌ FORBIDDEN: Business logic in UI
+class BadScreen extends StatelessWidget {
+  void _handleSubmit() async {
+    if (email.contains('@')) { // BUSINESS LOGIC IN UI - FORBIDDEN
+      await ApiClient().post('/submit');
+    }
+  }
+}
+
+// ❌ FORBIDDEN: BuildContext in Provider
+class BadProvider extends ChangeNotifier {
+  void submit(BuildContext context) { // FORBIDDEN PARAMETER
+    Navigator.of(context).push(...);
+  }
+}
+```
+
+### **❌ LOCALIZATION VIOLATIONS - INSTANT REJECTION:**
+```dart
+// ❌ FORBIDDEN: ANY hardcoded strings
+Text('Hello World') // INSTANT REJECTION
+AppBar(title: Text('Dashboard')) // INSTANT REJECTION
+const String label = 'Submit'; // INSTANT REJECTION
+hintText: 'Enter email' // INSTANT REJECTION
+```
+
+### **❌ DIMENSION VIOLATIONS - INSTANT REJECTION:**
+```dart
+// ❌ FORBIDDEN: ANY hardcoded values
+EdgeInsets.all(16.0) // INSTANT REJECTION
+SizedBox(height: 20) // INSTANT REJECTION
+padding: EdgeInsets.symmetric(horizontal: 12.0) // INSTANT REJECTION
+Container(width: 200, height: 100) // INSTANT REJECTION
+```
+
+### **❌ EXCEPTION HANDLING VIOLATIONS - INSTANT REJECTION:**
+```dart
+// ❌ FORBIDDEN: Generic catch
+try {
+  await operation();
+} catch (e) { // INSTANT REJECTION - must use 'on'
+  print(e);
+}
+
+// ❌ FORBIDDEN: Catching Object/dynamic
+catch (Object e) // INSTANT REJECTION
+catch (dynamic e) // INSTANT REJECTION
+```
+
+### **❌ ANALYSIS OPTIONS VIOLATIONS - INSTANT REJECTION:**
+```dart
+// ❌ FORBIDDEN: Non-final fields when final is possible
+class BadClass {
+  String _name = ''; // Should be final if not changed
+  List<String> _items = []; // Should be final
+}
+
+// ❌ FORBIDDEN: Non-const constructors when const is possible
+class BadWidget extends StatelessWidget {
+  BadWidget({Key? key}); // Should be const
+}
+```
+
+## **✅ REQUIRED PATTERNS - MANDATORY**
+
+### **✅ MVVM Architecture:**
+```dart
+// ✅ REQUIRED: View Layer
+class ExampleScreen extends StatelessWidget {
+  const ExampleScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
+    return Consumer<ExampleProvider>(
+      builder: (context, provider, child) {
+        return Scaffold(
+          body: Padding(
+            padding: EdgeInsets.all(AppSpacing.spaceL),
+            child: AppButton(
+              onPressed: () => _handleAction(context, provider, l10n),
+              size: AppButtonSize.large,
+              child: Text(l10n.submitButton),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _handleAction(
+    BuildContext context,
+    ExampleProvider provider,
+    AppLocalizations l10n,
+  ) async {
+    try {
+      final success = await provider.performAction();
+      if (success && context.mounted) {
+        AppSnackBar.showSuccess(context, message: l10n.actionSuccess);
+      }
+    } on ValidationException catch (e) {
+      AppSnackBar.showError(context, message: e.message);
+    } on NetworkException catch (e) {
+      AppSnackBar.showError(context, message: l10n.networkError);
+    } on Exception catch (e) {
+      AppSnackBar.showError(context, message: l10n.unexpectedError);
+    }
+  }
+}
+
+// ✅ REQUIRED: ViewModel Layer
+class ExampleProvider extends ChangeNotifier {
+  final ExampleService _service;
+  
+  // ✅ REQUIRED: Final fields where possible
+  final List<String> _items = [];
+  bool _isLoading = false;
+
+  ExampleProvider({required ExampleService service}) : _service = service;
+
+  List<String> get items => List.unmodifiable(_items);
+  bool get isLoading => _isLoading;
+
+  Future<bool> performAction() async {
+    _setLoading(true);
+    
+    try {
+      final result = await _service.performAction();
+      _setLoading(false);
+      return result.success;
+    } on ApiException catch (e) {
+      _setLoading(false);
+      rethrow; // Let UI handle specific error
+    } on Exception catch (e) {
+      _setLoading(false);
+      rethrow;
+    }
+  }
+
+  void _setLoading(bool loading) {
+    _isLoading = loading;
+    notifyListeners();
+  }
+}
+
+// ✅ REQUIRED: Model Layer
+class ExampleService {
+  final ApiClient _apiClient;
+
+  const ExampleService({required ApiClient apiClient}) : _apiClient = apiClient;
+
+  Future<ServiceResult> performAction() async {
+    try {
+      final response = await _apiClient.post('/action');
+      return ServiceResult.success(response.data);
+    } on DioException catch (e) {
+      throw ApiException('API Error: ${e.message}', statusCode: e.response?.statusCode ?? 0);
+    } on Exception catch (e) {
+      throw ServiceException('Service error: ${e.toString()}');
+    }
+  }
+}
+```
+
+### **✅ Localization:**
+```dart
+// ✅ REQUIRED: All text from AppLocalizations
+Text(l10n.welcomeMessage)
+AppBar(title: Text(l10n.dashboardTitle))
+hintText: l10n.enterEmailHint
+AppButton(child: Text(l10n.submitButton))
+
+// ✅ REQUIRED: Parameterized strings
+Text(l10n.welcomeUser(userName))
+Text(l10n.itemCount(items.length))
+```
+
+### **✅ Dimensions:**
+```dart
+// ✅ REQUIRED: All dimensions from constants
+padding: EdgeInsets.all(AppSpacing.spaceL)
+SizedBox(height: AppSpacing.spaceM)
+AppButton(size: AppButtonSize.large)
+AppTextInput(size: AppTextInputSize.large)
+IconButton(iconSize: AppDimensions.iconSizeLarge)
+```
+
+### **✅ Exception Handling:**
+```dart
+// ✅ REQUIRED: Specific exception handling with 'on'
+try {
+  await riskyOperation();
+} on ValidationException catch (e) {
+  _handleValidationError(e);
+} on NetworkException catch (e) {
+  _handleNetworkError(e);
+} on ApiException catch (e) {
+  _handleApiError(e);
+} on Exception catch (e) {
+  _handleUnexpectedError(e);
+}
+```
+
+### **✅ Analysis Options Compliance:**
+```dart
+// ✅ REQUIRED: Final fields where possible
+class GoodClass {
+  final String _name = 'initial'; // final when not changed
+  final List<String> _items = []; // final collection
+  String _mutableField = ''; // non-final when changed
+}
+
+// ✅ REQUIRED: Const constructors
+class GoodWidget extends StatelessWidget {
+  const GoodWidget({super.key}); // const constructor
+  
+  @override
+  Widget build(BuildContext context) {
+    return const Text('Hello'); // const where possible
+  }
+}
+```
+
+## **🚨 ENFORCEMENT CHECKLIST**
+
+**Before EVERY code response, verify ALL 40 points:**
+
+1-7: MVVM Architecture ✅
+8-13: Localization ✅  
+14-19: Dimensions ✅
+20-26: Analysis Options ✅
+27-32: Exception Handling ✅
+33-40: Architecture Foundations ✅
+
+**If ANY check fails → IMMEDIATE REJECTION with explanation**
+
+## **🚨 AUTO-REJECTION COMMANDS**
+
+```bash
+# These patterns trigger INSTANT REJECTION:
+grep -r "Text('.*')" lib/ui/ # Hardcoded strings
+grep -r "EdgeInsets\.all([0-9]" lib/ # Hardcoded dimensions  
+grep -r "} catch (e)" lib/ # Generic catch
+grep -r "setState(" lib/ # setState usage
+grep -r "StatefulWidget" lib/ # StatefulWidget for business logic
+```
+
+**🚨 ZERO TOLERANCE: Any violation = IMMEDIATE REJECTION + EXPLANATION + CORRECT PATTERN**

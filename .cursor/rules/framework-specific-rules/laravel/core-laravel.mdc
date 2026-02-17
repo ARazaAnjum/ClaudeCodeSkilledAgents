@@ -1,0 +1,56 @@
+---
+alwaysApply: true
+---
+# Core Laravel Development Rules
+
+## PHP Code Standards (ALWAYS ENFORCE)
+- ALWAYS use strict typing: `declare(strict_types=1);` at the top of PHP files
+- ALWAYS use type hints for method parameters and return types
+- ALWAYS follow PSR-12 coding standards
+- ALWAYS use meaningful variable names in camelCase
+- ALWAYS use PascalCase for class names
+- ALWAYS handle exceptions with try-catch blocks
+
+## Laravel Conventions (MANDATORY)
+- ALWAYS use Eloquent models instead of raw queries
+- ALWAYS use Form Requests for validation
+- ALWAYS use API Resources for JSON responses
+- ALWAYS implement proper relationships in models
+- ALWAYS use migrations for database changes
+- ALWAYS add proper indexes for performance
+
+## Multi-Tenant Architecture (CRITICAL)
+- ALWAYS filter queries by team_id/tenant_id
+- ALWAYS validate tenant access in controllers
+- ALWAYS use middleware for tenant isolation
+- ALWAYS check authorization before data access
+- ALWAYS scope database queries to current tenant
+
+## Security Rules (NON-NEGOTIABLE)
+- ALWAYS validate and sanitize input
+- ALWAYS use Laravel's built-in CSRF protection
+- ALWAYS implement authorization using Policies
+- ALWAYS use prepared statements (Eloquent default)
+- ALWAYS implement rate limiting for APIs
+- ALWAYS validate file uploads and types
+
+## Error Handling (REQUIRED)
+- ALWAYS wrap risky operations in try-catch
+- ALWAYS log errors with context
+- ALWAYS return consistent error responses
+- ALWAYS use custom exceptions for business logic
+- ALWAYS provide meaningful error messages
+
+## Testing Requirements (MANDATORY)
+- ALWAYS write Feature tests for API endpoints
+- ALWAYS write Unit tests for Services
+- ALWAYS use factories for test data
+- ALWAYS test authorization and validation
+- ALWAYS mock external services
+
+## Environment Configuration (CRITICAL)
+- ALWAYS use environment variables for configuration
+- ALWAYS validate required environment variables
+- ALWAYS use different configs for different environments
+- ALWAYS secure sensitive configuration data
+- ALWAYS document environment requirements

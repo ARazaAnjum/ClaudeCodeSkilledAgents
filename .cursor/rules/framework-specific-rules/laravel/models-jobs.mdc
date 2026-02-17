@@ -1,0 +1,61 @@
+---
+description: Laravel model conventions and job queue patterns
+globs: ["app/Models/**/*.php", "app/Jobs/**/*.php"]
+---
+
+# Laravel Models and Jobs
+
+## Model Conventions (STRICT)
+```php
+// ALWAYS follow this model pattern
+class Model extends BaseModel
+{
+    use HasFactory, SoftDeletes, LogsActivity;
+
+    // ALWAYS define fillable fields
+    protected $fillable = ['field1', 'field2'];
+
+    // ALWAYS define casts
+    protected $casts = [
+        'created_at' => 'datetime',
+        'is_active' => 'boolean',
+    ];
+
+    // ALWAYS implement relationships
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
+    }
+
+    // ALWAYS add query scopes
+    public function scopeForTeam(Builder $query, int $teamId): Builder
+    {
+        return $query->where('team_id', $teamId);
+    }
+}
+```
+
+## Job Queue Pattern (REQUIRED)
+```php
+// ALWAYS use jobs for heavy operations
+class ProcessDataJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public function __construct(
+        private int $teamId,
+        private array $data
+    ) {}
+
+    public function handle(): void
+    {
+        // ALWAYS implement proper error handling in jobs
+        try {
+            // Process data
+        } catch (\Exception $e) {
+            \Log::error('Job failed: ' . $e->getMessage());
+            $this->fail($e);
+        }
+    }
+}
+```

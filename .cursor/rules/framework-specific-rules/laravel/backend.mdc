@@ -1,0 +1,68 @@
+
+# Laravel Backend Development Rules
+
+
+
+## Controller & Routing
+- Keep **routes/web.php** for Blade pages; **routes/api.php** for Axios endpoints.
+- Controller methods return JSON for API routes; Blade views for web routes.
+
+## Models & Eloquent
+- Use Eloquent for CRUD; prefer query scopes for common filters (by company, by project status).
+- For reporting, raw queries are OK but **wrap in dedicated classes** under `app/Reports`.
+
+## Validation & AuthZ
+- Validate requests via Form Requests.
+- Use Policies for entity-level authorization (Projects/Companies/Contacts).
+- Return **422** for validation failures; include field-level messages.
+
+## Responses
+- Standardize JSON: `{ success: bool, data, error?: {code, message, details?} }`.
+
+
+This file serves as a reference for the distributed Laravel backend rules. The rules are organized into focused files for better maintainability and context-specific application.
+
+## Rule Files Overview
+
+### Core Rules (Always Applied)
+- **core-laravel.mdc** - Fundamental Laravel standards, conventions, and security rules
+
+### Architecture & Patterns
+- **architecture-patterns.mdc** - Dependency injection, service layer, repository pattern
+- **component-architecture.mdc** - Component pattern for business logic
+- **api-development.mdc** - API development patterns and performance optimization
+
+### Implementation Details
+- **helper-functions.mdc** - Helper function patterns and examples
+- **models-jobs.mdc** - Model conventions and job queue patterns
+
+## Quick Reference
+
+### Essential Patterns
+- Use strict typing and PSR-12 standards
+- Implement multi-tenant architecture with team_id filtering
+- Use dependency injection and service layer pattern
+- Follow Component architecture for business logic
+- Implement proper error handling and logging
+- Use helper functions for common operations
+- Cache expensive queries with proper invalidation
+- Use jobs for heavy/async operations
+
+### File Organization
+```
+app/
+├── Components/          # Business logic components
+├── Http/Controllers/   # Controllers with service injection
+├── Http/Resources/     # API response formatting
+├── Http/Requests/      # Form validation
+├── Services/           # Business logic services
+├── Repositories/       # Data access layer
+├── Policies/           # Authorization rules
+├── Jobs/               # Async task processing
+└── Support/            # Helper functions
+```
+
+For detailed rules and examples, refer to the specific rule files based on your current development context.
+
+- ALWAYS secure sensitive configuration data
+- ALWAYS document environment requirements

@@ -1,0 +1,72 @@
+---
+Description: Base Usage Standards Rules
+Globs: False
+Alwaysapply: False
+---
+
+### Context First — No Guesswork
+- Do Not Write A Single Line Of Code Until You Understand The System.
+- Immediately List Files In The Target Directory.
+- Ask Only The Necessary Clarifying Questions. No Fluff.
+- Detect And Follow Existing Patterns. Match Style, Structure, And Logic.
+- Identify Environment Variables, Config Files, And System Dependencies.
+
+### Challenge The Request — Don’t Blindly Follow
+- Identify Edge Cases Immediately.
+- Ask Specifically: What Are The Inputs? Outputs? Constraints?
+- Question Everything That Is Vague Or Assumed.
+- Refine The Task Until The Goal Is Bullet-proof.
+
+### Hold The Standard — Every Line Must Count
+- Code Must Be Modular, Testable, Clean.
+- Comment Methods. Use Docstrings. Explain Logic.
+- Suggest Best Practices If Current Approach Is Outdated.
+- If You Know A Better Way — Speak Up.
+
+### Zoom Out — Think Bigger Than Just The File
+- Don’t Patch. Design.
+- Think About Maintainability, Usability, Scalability.
+- Consider All Components (Frontend, Backend, Db, User Interface).
+- Plan For The User Experience. Not Just The Functionality.
+
+### Web Terminology — Speak The Right Language
+- Frame Solutions In Terms Of Apis, Routes, Component Structure, Data Flow.
+- Understand Frontend-backend Interactions Before Changing Either.
+
+### One File, One Response
+- Do Not Split File Responses.
+- Do Not Rename Methods Unless Absolutely Necessary.
+- Seek Approval Only When The Task Needs Clarity — Otherwise, Execute.
+
+### Enforce Strict Standards
+- Clean Code, Clean Structure.
+- 1600 Lines Per File Max.
+- Highlight Any File That Is Growing Beyond Control.
+- Use Linters, Formatters. If They’re Missing — Flag It.
+
+### Move Fast, But With Context
+- Always Bullet Your Plan Before Execution:
+- What You’re Doing
+- Why You’re Doing It
+- What You Expect To Change
+
+### Absolute Do-nots:
+- Do Not Change Translation Keys Unless Specified.
+- Do Not Add Logic That Doesn’t Need To Be There.
+- Do Not Wrap Everything In Try-catch. Think First.
+- Do Not Spam Files With Non-essential Components.
+- Do Not Create Side Effects Without Mentioning Them.
+
+### Remember:
+- Your Work Isn’t Done Until The System Is Stable.
+- Think Through All Consequences Of Your Changes.
+- If You Break Something In One Place, Fix It Across The Project.
+- Cleanup. Document. Review.
+
+### Think Like A Human:
+- Consider Natural Behaviour.
+- How Would A User Interact With This?
+- What Happens When Something Fails?
+- How Can You Make This Feel Seamless?
+
+Execute Like A Professional Coder. Think Like An Architect. Deliver Like A Leader.
