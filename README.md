@@ -7,6 +7,85 @@ A comprehensive collection of production-grade AI skills covering frontend, back
 [![Skills](https://img.shields.io/badge/Skills-69-blue)](skills/)
 [![Agents](https://img.shields.io/badge/Agents-138-green)](agents/)
 [![References](https://img.shields.io/badge/References-356-orange)](skills/)
+[![npm](https://img.shields.io/badge/npm-claudecode--skills-red)](https://www.npmjs.com/package/claudecode-skills)
+
+---
+
+## 📦 NPM Package — `claudecode-skills`
+
+Install the CLI globally and scaffold any project in seconds — copy the base rules and your chosen skills directly into your working directory.
+
+### Install
+
+```bash
+npm install -g claudecode-skills
+```
+
+### Usage
+
+Run from **any project directory**:
+
+```bash
+skills
+# or explicitly:
+skills setup
+```
+
+The interactive setup walks you through two steps:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ClaudeCode Skills Setup
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1 — Base rules & process files
+  Copies the .cursor/ folder into your project root.
+
+? Copy base rules and process files (.cursor) into the project root? (Y/n)
+  ✓ .cursor  →  /your-project/.cursor
+
+Step 2 — Skills
+  Copies selected skill folders into skills/ in your project.
+
+? Do you want to copy specific skills into your project? (Y/n)
+? Select one or more skills to copy:   ← checkbox list of 69 skills
+
+Done!
+```
+
+### What gets copied
+
+| Step | Source | Destination |
+|------|--------|-------------|
+| Base rules | `.cursor/` (rules + process files) | `<your-project>/.cursor/` |
+| Skills | `skills/<name>/` | `<your-project>/skills/<name>/` |
+
+### Flags
+
+```bash
+skills setup --dry-run          # Preview what would be copied — writes nothing
+skills setup --force            # Overwrite existing folders without asking
+skills setup --all              # Copy all 69 skills without the checkbox prompt
+skills setup --search react     # Pre-filter the skill list before selecting
+```
+
+### Conflict handling
+
+If a folder already exists you will be prompted to choose:
+- **Overwrite** — replaces the existing folder
+- **Skip** — leaves it untouched
+- **Rename** — copies as `<name>-1`, `<name>-2`, etc.
+
+### Other commands
+
+```bash
+skills list                     # Print all 69 available skills
+skills list --search python     # Filter by name
+skills --version                # Show version
+skills --help                   # Show help
+```
+
+---
 
 ## 🚀 Quick Start
 
