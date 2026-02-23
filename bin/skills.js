@@ -12,7 +12,7 @@ program
 // ── setup command (default) ───────────────────────────────────────────────────
 program
   .command('setup', { isDefault: true })
-  .description('Set up your project: copy base rules (.cursor) then select skills')
+  .description('Set up your project: copy base rules, select skills, and add CLAUDE.md')
   .option('--all', 'copy all skills without interactive prompt')
   .option('--dry-run', 'show what would be copied without actually copying')
   .option('--force', 'overwrite existing folders without asking')

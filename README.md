@@ -1,8 +1,16 @@
-# ClaudeCodeSkills
+# AI Workflow Skills
 
-> **69 specialized AI skills for software development with auto-generated agent commands**
+> **69 specialized AI skills + base rules + project intelligence — scaffold any project for AI-assisted development in seconds**
 
-A comprehensive collection of production-grade AI skills covering frontend, backend, DevOps, database, testing, architecture, AI/ML, and specialized domains. Each skill includes detailed documentation, best practices, and can be invoked directly in Claude or integrated via the Claude Agent SDK.
+A comprehensive collection of production-grade AI skills covering frontend, backend, DevOps, database, testing, architecture, AI/ML, and specialized domains. Each skill includes detailed documentation, best practices, and reference files.
+
+The CLI supports **two AI agents** — choose yours at startup and get a tailored setup:
+
+| | Cursor | Claude |
+|---|---|---|
+| **Project intelligence** | `cursor.mdc` | `CLAUDE.md` |
+| **Base rules & standards** | `ai-workflow/` | `ai-workflow/` |
+| **Skills destination** | `ai-workflow/skills/` | `skills/` |
 
 [![Skills](https://img.shields.io/badge/Skills-69-blue)](skills/)
 [![Agents](https://img.shields.io/badge/Agents-138-green)](agents/)
@@ -11,56 +19,188 @@ A comprehensive collection of production-grade AI skills covering frontend, back
 
 ---
 
-## 📦 NPM Package — `ai-workflow-skills`
-
-Install the CLI globally and scaffold any project in seconds — copy the base rules and your chosen skills directly into your working directory.
-
-### Install
+## 📦 Install
 
 ```bash
 npm install -g ai-workflow-skills
 ```
 
-### Usage
+## 🚀 Quick Setup
 
 Run from **any project directory**:
 
 ```bash
-skills
-# or explicitly:
 skills setup
 ```
 
-The interactive setup walks you through two steps:
+The CLI first asks which AI agent you use, then walks you through the setup:
+
+### Cursor flow
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  ClaudeCode Skills Setup
+  AI Workflow Skills Setup
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Step 1 — Base rules & process files
-  Copies the .cursor/ folder into your project root.
+? Which AI agent are you using?  →  Cursor
 
-? Copy base rules and process files (.cursor) into the project root? (Y/n)
-  ✓ .cursor  →  /your-project/.cursor
+Step 1 — cursor.mdc (Project Intelligence)
+  ✓ cursor.mdc  →  /your-project/cursor.mdc
 
-Step 2 — Skills
-  Copies selected skill folders into skills/ in your project.
+Step 2 — Base rules & standards
+  ? Copy base rules and standards (ai-workflow) into the project? (Y/n)
+  ✓ ai-workflow  →  /your-project/ai-workflow
 
-? Do you want to copy specific skills into your project? (Y/n)
-? Select one or more skills to copy:   ← checkbox list of 69 skills
+Step 3 — Skills
+  ? Do you want to copy skills into ai-workflow/skills/? (Y/n)
+  ? Select one or more skills to copy:   ← checkbox list of 69 skills
+  ✓ react-expert, typescript-pro, test-master …
 
-Done!
+  Code ends. Intelligence continues.
 ```
 
-### What gets copied
+### Claude flow
 
-| Step | Source | Destination |
-|------|--------|-------------|
-| Base rules | `.cursor/` (rules + process files) | `<your-project>/.cursor/` |
-| Skills | `skills/<name>/` | `<your-project>/skills/<name>/` |
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AI Workflow Skills Setup
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-### Flags
+? Which AI agent are you using?  →  Claude
+
+Step 1 — CLAUDE.md (Project Intelligence)
+  ✓ CLAUDE.md  →  /your-project/CLAUDE.md
+
+Step 2 — Base rules & standards
+  ? Copy base rules and standards (ai-workflow) into the project? (Y/n)
+  ✓ ai-workflow  →  /your-project/ai-workflow
+
+Step 3 — Skills
+  ? Do you want to copy skills into skills/? (Y/n)
+  ? Select one or more skills to copy:   ← checkbox list of 69 skills
+  ✓ react-expert, typescript-pro, test-master …
+
+  Code ends. Intelligence continues.
+```
+
+### After setup — Cursor project
+
+```
+your-project/
+├── cursor.mdc                            # Teaches Cursor to discover skills & rules
+├── ai-workflow/
+│   ├── process/                          # Workflow templates
+│   │   ├── create-prd.md                 #   Generate a Product Requirements Doc
+│   │   ├── generate-tasks.md             #   Break a PRD into dev tasks
+│   │   └── process-task-list.md          #   Work through tasks one by one
+│   ├── rules/                            # Coding standards
+│   │   ├── common-rules/                 #   Universal dev standards
+│   │   └── framework-specific-rules/     #   React, Vue, Laravel, Flutter, Node.js …
+│   └── skills/                           # Skills live inside ai-workflow
+│       ├── react-expert/
+│       ├── typescript-pro/
+│       └── …
+└── (your code)
+```
+
+### After setup — Claude project
+
+```
+your-project/
+├── CLAUDE.md                             # Teaches Claude to discover skills & rules
+├── ai-workflow/
+│   ├── process/                          # Workflow templates
+│   │   ├── create-prd.md                 #   Generate a Product Requirements Doc
+│   │   ├── generate-tasks.md             #   Break a PRD into dev tasks
+│   │   └── process-task-list.md          #   Work through tasks one by one
+│   └── rules/                            # Coding standards
+│       ├── common-rules/                 #   Universal dev standards
+│       └── framework-specific-rules/     #   React, Vue, Laravel, Flutter, Node.js …
+├── skills/                               # Skills at project root
+│   ├── react-expert/
+│   │   ├── SKILL.md                      # Role, triggers, workflow, constraints
+│   │   └── references/                   # Patterns, examples, best practices
+│   ├── typescript-pro/
+│   └── …
+└── (your code)
+```
+
+---
+
+## 🧠 How It Works
+
+### CLAUDE.md — Project Intelligence
+
+The `CLAUDE.md` file is read by Claude at the start of every conversation. It tells Claude to:
+
+- **Scan `skills/`** for a matching skill based on trigger keywords in your request
+- **Read the full `SKILL.md`** and `references/` before writing any code
+- **Follow `ai-workflow/rules/`** coding standards for your tech stack
+- **Use `ai-workflow/process/`** workflows for feature planning (PRD → tasks → implementation)
+
+### Skills — How Claude Matches Them
+
+Each skill has YAML frontmatter with `triggers`. Claude automatically matches your request:
+
+| You ask about… | Claude reads… |
+|---|---|
+| React, hooks, JSX, components | `skills/react-expert/` |
+| Vue, Composition API, Pinia | `skills/vue-expert/` |
+| Next.js, App Router, RSC | `skills/nextjs-developer/` |
+| Python, type hints, async | `skills/python-pro/` |
+| FastAPI, Pydantic | `skills/fastapi-expert/` |
+| Django, DRF, ORM | `skills/django-expert/` |
+| TypeScript, advanced types | `skills/typescript-pro/` |
+| Testing, TDD | `skills/test-master/` |
+| PostgreSQL, SQL, queries | `skills/postgres-pro/` |
+| Docker, CI/CD, deployment | `skills/devops-engineer/` |
+| Kubernetes, Helm | `skills/kubernetes-specialist/` |
+| AWS, GCP, Azure | `skills/cloud-architect/` |
+| REST API, GraphQL, OpenAPI | `skills/api-designer/` |
+| Architecture, system design | `skills/architecture-designer/` |
+| Security, vulnerabilities | `skills/security-reviewer/` |
+| Debugging, errors | `skills/debugging-wizard/` |
+
+Each matched skill gives Claude: a role definition, a 5-step workflow, reference docs, MUST DO / MUST NOT DO constraints, and output templates.
+
+### ai-workflow/ — Rules & Process
+
+**Process files** give Claude structured workflows:
+
+| File | When to use |
+|---|---|
+| `create-prd.md` | User wants to plan a new feature — Claude asks clarifying questions, generates a PRD |
+| `generate-tasks.md` | After a PRD exists — Claude breaks it into numbered dev tasks |
+| `process-task-list.md` | During implementation — Claude works through tasks one at a time |
+
+**Rule files** enforce coding standards:
+
+| Rules | Coverage |
+|---|---|
+| `common-rules/` | Universal development standards, cursor usage |
+| `framework-specific-rules/react.mdc` | React component patterns, hooks, state |
+| `framework-specific-rules/vue/` | Vue 3, Composition API, Pinia |
+| `framework-specific-rules/laravel/` | Laravel architecture, Eloquent, APIs |
+| `framework-specific-rules/flutter/` | Flutter widgets, BLoC, Riverpod |
+| `framework-specific-rules/nodejs.mdc` | Node.js patterns |
+| `framework-specific-rules/reactNative.mdc` | React Native mobile |
+| `framework-specific-rules/nextjs-supabase-auth.mdc` | Next.js + Supabase auth |
+
+---
+
+## 🔧 CLI Reference
+
+### Commands
+
+```bash
+skills setup                    # Interactive 3-step project setup (default)
+skills list                     # Print all 69 available skills
+skills list --search python     # Filter by name
+skills --version                # Show version
+skills --help                   # Show help
+```
+
+### Setup flags
 
 ```bash
 skills setup --dry-run          # Preview what would be copied — writes nothing
@@ -71,23 +211,14 @@ skills setup --search react     # Pre-filter the skill list before selecting
 
 ### Conflict handling
 
-If a folder already exists you will be prompted to choose:
-- **Overwrite** — replaces the existing folder
+If a folder or file already exists in your project you will be prompted to choose:
+- **Overwrite** — replaces the existing folder/file
 - **Skip** — leaves it untouched
 - **Rename** — copies as `<name>-1`, `<name>-2`, etc.
 
-### Other commands
-
-```bash
-skills list                     # Print all 69 available skills
-skills list --search python     # Filter by name
-skills --version                # Show version
-skills --help                   # Show help
-```
-
 ---
 
-## 🚀 Quick Start
+## 📚 Using Skills Directly
 
 ### Using Skills in Claude
 

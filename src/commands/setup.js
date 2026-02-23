@@ -8,9 +8,9 @@ const fse = require('fs-extra');
 
 const { getSkills, getSkillDescription, filterSkills } = require('../utils/skills');
 const { printHeader, printResult, printSummary } = require('../utils/display');
-const { SKILLS_DIR, CURSOR_DIR } = require('../config');
+const { SKILLS_DIR, AI_WORKFLOW_DIR, CLAUDE_MD, CURSOR_MDC } = require('../config');
 
-// ── Conflict resolution for a single item ─────────────────────────────────────
+// ── Conflict resolution ───────────────────────────────────────────────────────
 async function resolveConflict(name) {
   const { action } = await inquirer.prompt([
     {
@@ -20,14 +20,14 @@ async function resolveConflict(name) {
       choices: [
         { name: 'Overwrite  — replace the existing folder', value: 'overwrite' },
         { name: 'Skip       — leave the existing folder untouched', value: 'skip' },
-        { name: 'Rename     — copy with a numeric suffix (e.g. react-expert-1)', value: 'rename' },
+        { name: 'Rename     — copy with a numeric suffix', value: 'rename' },
       ],
     },
   ]);
   return action;
 }
 
-// ── Find a non-colliding destination path ─────────────────────────────────────
+// ── Find a non-colliding path ─────────────────────────────────────────────────
 async function findFreeDest(dest) {
   let suffix = 1;
   let candidate = `${dest}-${suffix}`;
@@ -38,7 +38,7 @@ async function findFreeDest(dest) {
   return candidate;
 }
 
-// ── Copy a path with a spinner ────────────────────────────────────────────────
+// ── Copy with spinner ─────────────────────────────────────────────────────────
 async function performCopy(src, dest) {
   const spinner = ora({ text: 'Copying…', color: 'cyan' }).start();
   try {
@@ -51,41 +51,37 @@ async function performCopy(src, dest) {
   }
 }
 
-// ── Step 1: copy .cursor folder to project root ───────────────────────────────
-async function copyCursorFolder(projectRoot, options) {
-  const dest = path.join(projectRoot, '.cursor');
-
+// ── Generic single-file/folder copy with conflict handling ────────────────────
+async function copySingle(label, src, dest, options) {
   if (options.dryRun) {
-    console.log(`  ${chalk.cyan('◎')} ${chalk.cyan('.cursor')}  →  ${chalk.dim(dest)}  ${chalk.cyan('[dry-run]')}`);
+    console.log(`  ${chalk.cyan('◎')} ${chalk.cyan(label)}  →  ${chalk.dim(dest)}  ${chalk.cyan('[dry-run]')}`);
     return;
   }
 
   const exists = await fse.pathExists(dest);
 
   if (exists && !options.force) {
-    const action = await resolveConflict('.cursor');
+    const action = await resolveConflict(label);
     if (action === 'skip') {
-      console.log(`  ${chalk.gray('○')} ${chalk.gray('.cursor')}  (skipped – already exists)`);
+      console.log(`  ${chalk.gray('○')} ${chalk.gray(label)}  (skipped – already exists)`);
       return;
     }
     if (action === 'rename') {
       const freeDest = await findFreeDest(dest);
-      const { ok, error } = await performCopy(CURSOR_DIR, freeDest);
-      if (ok) console.log(`  ${chalk.yellow('↪')} ${chalk.yellow('.cursor')}  →  ${chalk.dim(freeDest)}  ${chalk.yellow('(renamed)')}`);
-      else    console.log(`  ${chalk.red('✗')} ${chalk.red('.cursor')}: ${chalk.red(error)}`);
+      const { ok, error } = await performCopy(src, freeDest);
+      if (ok) console.log(`  ${chalk.yellow('↪')} ${chalk.yellow(label)}  →  ${chalk.dim(freeDest)}  ${chalk.yellow('(renamed)')}`);
+      else    console.log(`  ${chalk.red('✗')} ${chalk.red(label)}: ${chalk.red(error)}`);
       return;
     }
-    // overwrite falls through
   }
 
-  const { ok, error } = await performCopy(CURSOR_DIR, dest);
-  if (ok) console.log(`  ${chalk.green('✓')} ${chalk.green('.cursor')}  →  ${chalk.dim(dest)}`);
-  else    console.log(`  ${chalk.red('✗')} ${chalk.red('.cursor')}: ${chalk.red(error)}`);
+  const { ok, error } = await performCopy(src, dest);
+  if (ok) console.log(`  ${chalk.green('✓')} ${chalk.green(label)}  →  ${chalk.dim(dest)}`);
+  else    console.log(`  ${chalk.red('✗')} ${chalk.red(label)}: ${chalk.red(error)}`);
 }
 
-// ── Step 2: copy selected skills into <root>/skills/ ─────────────────────────
+// ── Copy selected skills ──────────────────────────────────────────────────────
 async function copySkills(skillsDir, skills, options) {
-  // Optional name filter
   if (options.search) {
     skills = filterSkills(skills, options.search);
     if (skills.length === 0) {
@@ -95,7 +91,6 @@ async function copySkills(skillsDir, skills, options) {
     console.log(chalk.dim(`  Showing ${skills.length} skill(s) matching "${options.search}"\n`));
   }
 
-  // Select
   let selected;
   if (options.all) {
     selected = skills;
@@ -133,7 +128,6 @@ async function copySkills(skillsDir, skills, options) {
     return;
   }
 
-  // Confirm (skip for --all / --dry-run)
   if (!options.all && !options.dryRun) {
     const { ok } = await inquirer.prompt([
       {
@@ -203,35 +197,51 @@ async function copySkills(skillsDir, skills, options) {
   if (results.some(r => r.status === 'error')) process.exit(1);
 }
 
-// ── Main command handler ──────────────────────────────────────────────────────
-module.exports = async function copyCommand(options) {
-  const projectRoot = process.cwd();
-  const skillsDir   = path.join(projectRoot, 'skills');
+// ── Cursor flow ───────────────────────────────────────────────────────────────
+async function cursorFlow(projectRoot, options) {
+  // Step 1: copy cursor.mdc
+  console.log(chalk.bold('\nStep 1 — cursor.mdc (Project Intelligence)'));
+  console.log(chalk.dim(`  Tells Cursor AI how to discover and use your skills and rules.\n`));
+  await copySingle('cursor.mdc', CURSOR_MDC, path.join(projectRoot, 'cursor.mdc'), options);
 
-  printHeader('ClaudeCode Skills Setup');
-
-  // ── Step 1: base rules (.cursor) ────────────────────────────────────────────
-  console.log(chalk.bold('Step 1 — Base rules & process files'));
-  console.log(chalk.dim(`  Copies the ${chalk.white('.cursor/')} folder into your project root.\n`));
+  // Step 2: base rules
+  console.log('\n' + chalk.bold('Step 2 — Base rules & standards'));
+  console.log(chalk.dim(`  Copies the ${chalk.white('ai-workflow/')} folder (coding rules + process files).\n`));
 
   const { copyRules } = await inquirer.prompt([
     {
       type: 'confirm',
       name: 'copyRules',
-      message: 'Copy base rules and process files (.cursor) into the project root?',
+      message: 'Copy base rules and standards (ai-workflow) into the project?',
       default: true,
     },
   ]);
 
   if (copyRules) {
-    await copyCursorFolder(projectRoot, options);
+    await copySingle('ai-workflow', AI_WORKFLOW_DIR, path.join(projectRoot, 'ai-workflow'), options);
   } else {
     console.log(chalk.dim('  Skipped.\n'));
   }
 
-  // ── Step 2: skills ───────────────────────────────────────────────────────────
-  console.log('\n' + chalk.bold('Step 2 — Skills'));
-  console.log(chalk.dim(`  Copies selected skill folders into ${chalk.white('skills/')} in your project.\n`));
+  // Step 3: ask if user wants skills
+  console.log('\n' + chalk.bold('Step 3 — Skills'));
+  console.log(chalk.dim(`  Copies selected skill folders into ${chalk.white('ai-workflow/skills/')} in your project.\n`));
+
+  const { copySkillsChoice } = await inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'copySkillsChoice',
+      message: 'Do you want to copy skills into ai-workflow/skills/?',
+      default: true,
+    },
+  ]);
+
+  if (!copySkillsChoice) {
+    console.log(chalk.dim('  Skipped.\n'));
+    return;
+  }
+
+  const skillsDir = path.join(projectRoot, 'ai-workflow', 'skills');
 
   let skills;
   try {
@@ -243,23 +253,101 @@ module.exports = async function copyCommand(options) {
 
   if (skills.length === 0) {
     console.log(chalk.yellow('  No skills found.'));
-    process.exit(0);
+    return;
   }
 
-  const { copySkillsAnswer } = await inquirer.prompt([
+  await copySkills(skillsDir, skills, options);
+}
+
+// ── Claude flow ───────────────────────────────────────────────────────────────
+async function claudeFlow(projectRoot, options) {
+  const skillsDir = path.join(projectRoot, 'skills');
+
+  // Step 1: copy CLAUDE.md
+  console.log(chalk.bold('\nStep 1 — CLAUDE.md (Project Intelligence)'));
+  console.log(chalk.dim(`  Tells Claude how to discover and use your skills and rules.\n`));
+  await copySingle('CLAUDE.md', CLAUDE_MD, path.join(projectRoot, 'CLAUDE.md'), options);
+
+  // Step 2: base rules
+  console.log('\n' + chalk.bold('Step 2 — Base rules & standards'));
+  console.log(chalk.dim(`  Copies the ${chalk.white('ai-workflow/')} folder (coding rules + process files).\n`));
+
+  const { copyRules } = await inquirer.prompt([
     {
       type: 'confirm',
-      name: 'copySkillsAnswer',
-      message: 'Do you want to copy specific skills into your project?',
+      name: 'copyRules',
+      message: 'Copy base rules and standards (ai-workflow) into the project?',
       default: true,
     },
   ]);
 
-  if (copySkillsAnswer) {
-    await copySkills(skillsDir, skills, options);
+  if (copyRules) {
+    await copySingle('ai-workflow', AI_WORKFLOW_DIR, path.join(projectRoot, 'ai-workflow'), options);
   } else {
     console.log(chalk.dim('  Skipped.\n'));
   }
 
-  console.log(chalk.green.bold('\nDone!\n'));
+  // Step 3: ask if user wants skills
+  console.log('\n' + chalk.bold('Step 3 — Skills'));
+  console.log(chalk.dim(`  Copies selected skill folders into ${chalk.white('skills/')} in your project.\n`));
+
+  const { copySkillsChoice } = await inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'copySkillsChoice',
+      message: 'Do you want to copy skills into skills/?',
+      default: true,
+    },
+  ]);
+
+  if (!copySkillsChoice) {
+    console.log(chalk.dim('  Skipped.\n'));
+    return;
+  }
+
+  let skills;
+  try {
+    skills = getSkills();
+  } catch (err) {
+    console.error(chalk.red(`✗ ${err.message}`));
+    process.exit(1);
+  }
+
+  if (skills.length === 0) {
+    console.log(chalk.yellow('  No skills found.'));
+    return;
+  }
+
+  await copySkills(skillsDir, skills, options);
+}
+
+// ── Main command handler ──────────────────────────────────────────────────────
+module.exports = async function setupCommand(options) {
+  const projectRoot = process.cwd();
+
+  printHeader('AI Workflow Skills Setup');
+
+  // ── Choose agent ────────────────────────────────────────────────────────────
+  const { agent } = await inquirer.prompt([
+    {
+      type: 'list',
+      name: 'agent',
+      message: 'Which AI agent are you using?',
+      choices: [
+        { name: `${chalk.bold('Cursor')}   ${chalk.dim('— copies cursor.mdc + ai-workflow rules')}`, value: 'cursor' },
+        { name: `${chalk.bold('Claude')}   ${chalk.dim('— copies CLAUDE.md + skills')}`, value: 'claude' },
+      ],
+    },
+  ]);
+
+  if (agent === 'cursor') {
+    await cursorFlow(projectRoot, options);
+  } else {
+    await claudeFlow(projectRoot, options);
+  }
+
+  // ── Farewell ────────────────────────────────────────────────────────────────
+  console.log();
+  console.log(chalk.bold.cyan('  Code ends. Intelligence continues.'));
+  console.log();
 };
