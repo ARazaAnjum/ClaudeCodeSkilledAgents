@@ -24,6 +24,8 @@
     "src/",
     "skills/",
     "ai-workflow/",
+    "commands/",
+    ".claude-plugin/",
     "CLAUDE.md",
     "cursor.mdc",
     "README.md"

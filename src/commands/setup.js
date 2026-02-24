@@ -8,7 +8,7 @@ const fse = require('fs-extra');
 
 const { getSkills, getSkillDescription, filterSkills } = require('../utils/skills');
 const { printHeader, printResult, printSummary } = require('../utils/display');
-const { SKILLS_DIR, AI_WORKFLOW_DIR, CLAUDE_MD, CURSOR_MDC } = require('../config');
+const { SKILLS_DIR, AI_WORKFLOW_DIR, CLAUDE_MD, CURSOR_MDC, CLAUDE_PLUGIN_DIR, COMMANDS_DIR } = require('../config');
 
 // ── Conflict resolution ───────────────────────────────────────────────────────
 async function resolveConflict(name) {
@@ -259,7 +259,64 @@ async function cursorFlow(projectRoot, options) {
   await copySkills(skillsDir, skills, options);
 }
 
-// ── Claude flow ───────────────────────────────────────────────────────────────
+// ── Claude plugin flow ────────────────────────────────────────────────────────
+async function claudePluginFlow(projectRoot, options) {
+  console.log(chalk.bold('\n  Installing as Claude Code Plugin\n'));
+  console.log(chalk.dim('  Copies .claude-plugin/, skills/, ai-workflow/, commands/, and CLAUDE.md\n'));
+
+  // Step 1: .claude-plugin/
+  console.log(chalk.bold('Step 1 — .claude-plugin/ (Plugin Manifest)'));
+  console.log(chalk.dim('  Contains plugin.json that registers this as a Claude Code plugin.\n'));
+  await copySingle('.claude-plugin', CLAUDE_PLUGIN_DIR, path.join(projectRoot, '.claude-plugin'), options);
+
+  // Step 2: CLAUDE.md
+  console.log('\n' + chalk.bold('Step 2 — CLAUDE.md (Project Intelligence)'));
+  console.log(chalk.dim('  Tells Claude how to discover and use your skills and rules.\n'));
+  await copySingle('CLAUDE.md', CLAUDE_MD, path.join(projectRoot, 'CLAUDE.md'), options);
+
+  // Step 3: ai-workflow/
+  console.log('\n' + chalk.bold('Step 3 — ai-workflow/ (Rules & Standards)'));
+  console.log(chalk.dim('  Coding rules, process files, and framework-specific standards.\n'));
+  await copySingle('ai-workflow', AI_WORKFLOW_DIR, path.join(projectRoot, 'ai-workflow'), options);
+
+  // Step 4: skills/ (all skills)
+  console.log('\n' + chalk.bold('Step 4 — skills/ (All Skills)'));
+  console.log(chalk.dim('  Copies all skill definitions. Claude auto-triggers them based on context.\n'));
+
+  let skills;
+  try {
+    skills = getSkills();
+  } catch (err) {
+    console.error(chalk.red(`✗ ${err.message}`));
+    process.exit(1);
+  }
+
+  if (skills.length === 0) {
+    console.log(chalk.yellow('  No skills found.'));
+  } else {
+    const skillsDir = path.join(projectRoot, 'skills');
+    await copySkills(skillsDir, skills, { ...options, all: true });
+  }
+
+  // Step 5: commands/
+  console.log('\n' + chalk.bold('Step 5 — commands/ (Slash Commands)'));
+  console.log(chalk.dim('  Workflow commands: create-prd, generate-tasks, process-tasks.\n'));
+  await copySingle('commands', COMMANDS_DIR, path.join(projectRoot, 'commands'), options);
+
+  // ── Usage instructions ──────────────────────────────────────────────────────
+  console.log('\n' + chalk.bold.green('  Plugin installed successfully!'));
+  console.log();
+  console.log(chalk.dim('  To use the plugin, run:'));
+  console.log(chalk.cyan('    claude --plugin-dir .'));
+  console.log();
+  console.log(chalk.dim('  Available slash commands:'));
+  console.log(chalk.white('    /ai-workflow-skills:create-prd       ') + chalk.dim('— Generate a PRD'));
+  console.log(chalk.white('    /ai-workflow-skills:generate-tasks   ') + chalk.dim('— Break PRD into tasks'));
+  console.log(chalk.white('    /ai-workflow-skills:process-tasks    ') + chalk.dim('— Work through task list'));
+  console.log();
+}
+
+// ── Claude normal skillset flow ──────────────────────────────────────────────
 async function claudeFlow(projectRoot, options) {
   const skillsDir = path.join(projectRoot, 'skills');
 
@@ -343,7 +400,24 @@ module.exports = async function setupCommand(options) {
   if (agent === 'cursor') {
     await cursorFlow(projectRoot, options);
   } else {
-    await claudeFlow(projectRoot, options);
+    // ── Choose Claude setup mode ──────────────────────────────────────────────
+    const { mode } = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'mode',
+        message: 'How would you like to set up Claude skills?',
+        choices: [
+          { name: `${chalk.bold('Plugin')}           ${chalk.dim('— install as a Claude Code plugin (all skills + slash commands)')}`, value: 'plugin' },
+          { name: `${chalk.bold('Normal skillset')}   ${chalk.dim('— copy selected skills into your project')}`, value: 'normal' },
+        ],
+      },
+    ]);
+
+    if (mode === 'plugin') {
+      await claudePluginFlow(projectRoot, options);
+    } else {
+      await claudeFlow(projectRoot, options);
+    }
   }
 
   // ── Farewell ────────────────────────────────────────────────────────────────

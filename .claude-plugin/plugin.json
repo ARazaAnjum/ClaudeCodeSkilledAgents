@@ -1,0 +1,22 @@
+{
+  "name": "ai-workflow-skills",
+  "description": "72 specialized AI skills for production-grade development across React, Python, FastAPI, DevOps, and 60+ more technologies",
+  "version": "1.0.5",
+  "author": {
+    "name": "ClaudeCodeSkills Contributors"
+  },
+  "repository": "https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "workflow",
+    "react",
+    "python",
+    "devops",
+    "testing",
+    "architecture",
+    "api",
+    "database",
+    "security"
+  ]
+}

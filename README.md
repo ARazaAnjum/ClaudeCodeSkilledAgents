@@ -127,6 +127,70 @@ your-project/
 
 ---
 
+## 🔌 Claude Code Plugin
+
+This project is also available as a **Claude Code plugin**. Instead of copying skills into your project, you can load them directly into Claude Code.
+
+### Install as a plugin (local)
+
+```bash
+# Load directly from a local clone
+claude --plugin-dir /path/to/ai-workflow-skills
+```
+
+### Install from marketplace
+
+```bash
+# If published to a marketplace
+claude plugin install ai-workflow-skills
+```
+
+### What you get
+
+Once installed, the plugin provides:
+
+- **72 auto-triggered skills** — Claude automatically uses the right skill based on your task (React, Python, DevOps, etc.)
+- **3 slash commands** for structured workflows:
+  - `/ai-workflow-skills:create-prd` — Generate a Product Requirements Document
+  - `/ai-workflow-skills:generate-tasks` — Break a PRD into development tasks
+  - `/ai-workflow-skills:process-tasks` — Work through a task list step by step
+- **Development rules** — Coding standards applied automatically as background knowledge
+
+### Plugin structure
+
+```
+ai-workflow-skills/
+├── .claude-plugin/
+│   └── plugin.json              # Plugin manifest
+├── skills/                      # 72 auto-triggered skills
+│   ├── react-expert/
+│   │   ├── SKILL.md             # Skill definition
+│   │   └── references/          # Supporting docs
+│   ├── python-pro/
+│   └── ...
+├── commands/                    # User-invocable slash commands
+│   ├── create-prd.md
+│   ├── generate-tasks.md
+│   └── process-tasks.md
+└── README.md
+```
+
+### Testing the plugin
+
+```bash
+# Start Claude Code with the plugin loaded
+claude --plugin-dir .
+
+# Try a slash command
+/ai-workflow-skills:create-prd my-new-feature
+
+# Or just ask a question — skills trigger automatically
+> Help me build a React component with sorting
+# → Claude loads react-expert skill automatically
+```
+
+---
+
 ## 🧠 How It Works
 
 ### CLAUDE.md — Project Intelligence
