@@ -1,6 +1,6 @@
 {
   "name": "ai-workflow-skills",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Interactive CLI to copy ClaudeCode skills into any project",
   "bin": {
     "skills": "bin/skills.js"

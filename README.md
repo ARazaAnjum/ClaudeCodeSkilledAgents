@@ -1,31 +1,77 @@
 # AI Workflow Skills
 
-> **69 specialized AI skills + base rules + project intelligence — scaffold any project for AI-assisted development in seconds**
+> **72 specialized AI skills + base rules + project intelligence — scaffold any project for AI-assisted development in seconds**
 
 A comprehensive collection of production-grade AI skills covering frontend, backend, DevOps, database, testing, architecture, AI/ML, and specialized domains. Each skill includes detailed documentation, best practices, and reference files.
 
-The CLI supports **two AI agents** — choose yours at startup and get a tailored setup:
-
-| | Cursor | Claude |
-|---|---|---|
-| **Project intelligence** | `cursor.mdc` | `CLAUDE.md` |
-| **Base rules & standards** | `ai-workflow/` | `ai-workflow/` |
-| **Skills destination** | `ai-workflow/skills/` | `skills/` |
-
-[![Skills](https://img.shields.io/badge/Skills-69-blue)](skills/)
+[![Skills](https://img.shields.io/badge/Skills-72-blue)](skills/)
 [![Agents](https://img.shields.io/badge/Agents-138-green)](agents/)
 [![References](https://img.shields.io/badge/References-356-orange)](skills/)
 [![npm](https://img.shields.io/badge/npm-ai--workflow--skills-red)](https://www.npmjs.com/package/ai-workflow-skills)
+[![Claude Code Plugin](https://img.shields.io/badge/Claude_Code-Plugin-purple)](https://claude.ai)
 
 ---
 
 ## 📦 Install
 
+### Option 1: Claude Code Plugin (Recommended)
+
+Install as a **Claude Code plugin** — all 72 skills load natively with auto-triggering and slash commands.
+
+```bash
+# Clone the repo
+git clone https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents.git
+
+# Load as a plugin
+claude --plugin-dir ./ClaudeCodeSkilledAgents
+```
+
+**Available slash commands once loaded:**
+
+| Command | Description |
+|---------|-------------|
+| `/ai-workflow-skills:create-prd [feature]` | Generate a Product Requirements Document |
+| `/ai-workflow-skills:generate-tasks [prd-path]` | Break a PRD into development tasks |
+| `/ai-workflow-skills:process-tasks [task-path]` | Work through a task list step by step |
+
+All 72 skills auto-trigger based on your task — just ask a question and Claude picks the right expert.
+
+### Option 2: CLI Setup
+
+Install the CLI globally and scaffold skills into any project:
+
 ```bash
 npm install -g ai-workflow-skills
 ```
 
+### Option 3: CLI with Plugin Mode
+
+The CLI also supports installing as a plugin into your project:
+
+```bash
+skills setup
+```
+
+When you select **Claude**, choose between:
+
+| Mode | What it does |
+|------|-------------|
+| **Plugin** | Copies `.claude-plugin/`, `skills/`, `ai-workflow/`, `commands/`, and `CLAUDE.md` — ready to use with `claude --plugin-dir .` |
+| **Normal skillset** | Interactive skill selection — pick only the skills you need |
+
+---
+
 ## 🚀 Quick Setup
+
+The CLI supports **three agents** — choose yours at startup:
+
+| | Cursor | Claude (Normal) | Claude (Plugin) |
+|---|---|---|---|
+| **Project intelligence** | `cursor.mdc` | `CLAUDE.md` | `CLAUDE.md` |
+| **Base rules & standards** | `ai-workflow/` | `ai-workflow/` | `ai-workflow/` |
+| **Skills** | `ai-workflow/skills/` (selected) | `skills/` (selected) | `skills/` (all 72) |
+| **Slash commands** | — | — | `commands/` |
+| **Plugin manifest** | — | — | `.claude-plugin/` |
 
 Run from **any project directory**:
 
@@ -46,6 +92,11 @@ The CLI first asks which AI agent you use, then walks you through the setup:
 
 Step 1 — cursor.mdc (Project Intelligence)
   ✓ cursor.mdc  →  /your-project/cursor.mdc
+
+Step 2 — How would you like to set up Claude skills?
+  ✓ Plugin 
+  ✓ Normal Skillset
+
 
 Step 2 — Base rules & standards
   ? Copy base rules and standards (ai-workflow) into the project? (Y/n)
