@@ -1,10 +1,10 @@
 # AI Workflow Skills
 
-> **72 specialized AI skills + base rules + project intelligence — scaffold any project for AI-assisted development in seconds**
+> **70 specialized AI skills (68 user-invocable + 2 background) + base rules + project intelligence — scaffold any project for AI-assisted development in seconds**
 
 A comprehensive collection of production-grade AI skills covering frontend, backend, DevOps, database, testing, architecture, AI/ML, and specialized domains. Each skill includes detailed documentation, best practices, and reference files.
 
-[![Skills](https://img.shields.io/badge/Skills-72-blue)](skills/)
+[![Skills](https://img.shields.io/badge/Skills-70-blue)](skills/)
 [![Agents](https://img.shields.io/badge/Agents-138-green)](agents/)
 [![References](https://img.shields.io/badge/References-356-orange)](skills/)
 [![npm](https://img.shields.io/badge/npm-ai--workflow--skills-red)](https://www.npmjs.com/package/ai-workflow-skills)
@@ -16,15 +16,27 @@ A comprehensive collection of production-grade AI skills covering frontend, back
 
 ### Option 1: Claude Code Plugin (Recommended)
 
-Install as a **Claude Code plugin** — all 72 skills load natively with auto-triggering and slash commands.
+Install as a **Claude Code plugin** — all 70 skills load natively with auto-triggering and slash commands.
+
+**Quick start (one command):**
 
 ```bash
-# Clone the repo
-git clone https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents.git
+git clone https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents.git ~/.claude/plugins/ai-workflow-skills
+claude --plugin-dir ~/.claude/plugins/ai-workflow-skills
+```
 
-# Load as a plugin
+**Or clone anywhere and point to it:**
+
+```bash
+git clone https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents.git
 claude --plugin-dir ./ClaudeCodeSkilledAgents
 ```
+
+> **Tip:** Add `--plugin-dir` to your shell alias for permanent use:
+> ```bash
+> # Add to ~/.bashrc or ~/.zshrc
+> alias claude='claude --plugin-dir ~/.claude/plugins/ai-workflow-skills'
+> ```
 
 **Available slash commands once loaded:**
 
@@ -34,7 +46,13 @@ claude --plugin-dir ./ClaudeCodeSkilledAgents
 | `/ai-workflow-skills:generate-tasks [prd-path]` | Break a PRD into development tasks |
 | `/ai-workflow-skills:process-tasks [task-path]` | Work through a task list step by step |
 
-All 72 skills auto-trigger based on your task — just ask a question and Claude picks the right expert.
+All 70 skills auto-trigger based on your task — just ask a question and Claude picks the right expert.
+
+**To update later:**
+
+```bash
+cd ~/.claude/plugins/ai-workflow-skills && git pull
+```
 
 ### Option 2: CLI Setup
 
@@ -69,7 +87,7 @@ The CLI supports **three agents** — choose yours at startup:
 |---|---|---|---|
 | **Project intelligence** | `cursor.mdc` | `CLAUDE.md` | `CLAUDE.md` |
 | **Base rules & standards** | `ai-workflow/` | `ai-workflow/` | `ai-workflow/` |
-| **Skills** | `ai-workflow/skills/` (selected) | `skills/` (selected) | `skills/` (all 72) |
+| **Skills** | `ai-workflow/skills/` (selected) | `skills/` (selected) | `skills/` (all 70) |
 | **Slash commands** | — | — | `commands/` |
 | **Plugin manifest** | — | — | `.claude-plugin/` |
 
@@ -200,7 +218,7 @@ claude plugin install ai-workflow-skills
 
 Once installed, the plugin provides:
 
-- **72 auto-triggered skills** — Claude automatically uses the right skill based on your task (React, Python, DevOps, etc.)
+- **70 auto-triggered skills** (68 user-invocable + 2 background) — Claude automatically uses the right skill based on your task (React, Python, DevOps, etc.)
 - **3 slash commands** for structured workflows:
   - `/ai-workflow-skills:create-prd` — Generate a Product Requirements Document
   - `/ai-workflow-skills:generate-tasks` — Break a PRD into development tasks
@@ -213,16 +231,22 @@ Once installed, the plugin provides:
 ai-workflow-skills/
 ├── .claude-plugin/
 │   └── plugin.json              # Plugin manifest
-├── skills/                      # 72 auto-triggered skills
+├── skills/                      # 70 auto-triggered skills (68 user-invocable + 2 background)
 │   ├── react-expert/
 │   │   ├── SKILL.md             # Skill definition
 │   │   └── references/          # Supporting docs
 │   ├── python-pro/
+│   ├── ai-workflow-context/     # Background skill
+│   ├── development-standards/   # Background skill
 │   └── ...
 ├── commands/                    # User-invocable slash commands
 │   ├── create-prd.md
 │   ├── generate-tasks.md
 │   └── process-tasks.md
+├── scripts/
+│   ├── category-config.json     # Category plugin definitions
+│   └── build-category-plugins.js # Generates category sub-plugins
+├── dist/plugins/                # Generated category plugins (built output)
 └── README.md
 ```
 
@@ -239,6 +263,34 @@ claude --plugin-dir .
 > Help me build a React component with sorting
 # → Claude loads react-expert skill automatically
 ```
+
+### Category Plugins
+
+Don't need all 70 skills? Install only the category you need:
+
+```bash
+# Build category plugins first
+npm run build:plugins
+
+# Then load a specific category
+claude --plugin-dir ./dist/plugins/frontend
+claude --plugin-dir ./dist/plugins/backend
+claude --plugin-dir ./dist/plugins/devops
+```
+
+| Category | Plugin Name | Skills |
+|----------|-------------|--------|
+| Frontend | `ai-workflow-skills-frontend` | 10 + 2 background |
+| Backend | `ai-workflow-skills-backend` | 17 + 2 background |
+| DevOps | `ai-workflow-skills-devops` | 7 + 2 background |
+| Database | `ai-workflow-skills-database` | 5 + 2 background |
+| Testing | `ai-workflow-skills-testing` | 6 + 2 background |
+| Architecture | `ai-workflow-skills-architecture` | 4 + 2 background |
+| AI/ML | `ai-workflow-skills-ai-ml` | 4 + 2 background |
+| Specialized | `ai-workflow-skills-specialized` | 8 + 2 background |
+| Utilities | `ai-workflow-skills-utilities` | 7 + 2 background |
+
+Each category plugin includes the 2 background skills (`ai-workflow-context` and `development-standards`) plus 3 slash commands automatically.
 
 ---
 
@@ -313,6 +365,12 @@ skills list                     # Print all 69 available skills
 skills list --search python     # Filter by name
 skills --version                # Show version
 skills --help                   # Show help
+```
+
+### Build
+
+```bash
+npm run build:plugins            # Generate 9 category sub-plugins in dist/plugins/
 ```
 
 ### Setup flags
@@ -515,7 +573,7 @@ ClaudeCodeSkills/
 | [wordpress-pro](skills/wordpress-pro/) | WordPress development |
 | [salesforce-developer](skills/salesforce-developer/) | Salesforce development |
 
-### Utilities & Process (8)
+### Utilities & Process (7)
 | Skill | Description |
 |-------|-------------|
 | [fullstack-guardian](skills/fullstack-guardian/) | Full-stack feature development |
@@ -524,7 +582,6 @@ ClaudeCodeSkills/
 | [debugging-wizard](skills/debugging-wizard/) | Debugging assistance |
 | [code-documenter](skills/code-documenter/) | Documentation generation |
 | [spec-miner](skills/spec-miner/) | Requirements gathering |
-| [coding-standards](skills/coding-standards/) | Code standards enforcement |
 | [atlassian-mcp](skills/atlassian-mcp/) | Atlassian tools integration |
 
 ## 🔧 Features
@@ -571,7 +628,7 @@ Every skill follows a proven format:
 
 ## 📊 Statistics
 
-- **Total Skills**: 69
+- **Total Skills**: 70 (68 user-invocable + 2 background)
 - **Total Agents**: 138 (TypeScript + JSON)
 - **Reference Files**: 356
 - **Total Documentation**: 425+ markdown files
@@ -795,6 +852,6 @@ Built with inspiration from production-grade software engineering practices and 
 
 **🚀 Ready to use?** Start with `@react-expert` or run `node agents/cli.js recommend web-app`
 
-**📊 Stats**: 69 skills | 138 agents | 356 references | 425+ docs
+**📊 Stats**: 70 skills | 138 agents | 356 references | 425+ docs
 
-**🔄 Last Updated**: 2026-02-03
+**🔄 Last Updated**: 2026-03-05

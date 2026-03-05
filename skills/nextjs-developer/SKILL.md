@@ -52,6 +52,7 @@ Load detailed guidance based on context:
 | Server Actions | `references/server-actions.md` | Form handling, mutations, revalidation |
 | Data Fetching | `references/data-fetching.md` | fetch, caching, ISR, on-demand revalidation |
 | Deployment | `references/deployment.md` | Vercel, self-hosting, Docker, optimization |
+| Next.js + Supabase Auth Rules | `references/nextjs-supabase-auth-rules.md` | When using Supabase auth with Next.js |
 
 ## Constraints
 

@@ -1,0 +1,130 @@
+{
+  "backgroundSkills": [
+    "ai-workflow-context",
+    "development-standards"
+  ],
+  "categories": {
+    "frontend": {
+      "name": "ai-workflow-skills-frontend",
+      "description": "10 specialized AI skills for frontend development: React, Vue, Angular, Next.js, Flutter, TypeScript, and more",
+      "skills": [
+        "react-expert",
+        "vue-expert",
+        "vue-expert-js",
+        "angular-architect",
+        "nextjs-developer",
+        "react-native-expert",
+        "flutter-expert",
+        "frontend-design",
+        "typescript-pro",
+        "javascript-pro"
+      ]
+    },
+    "backend": {
+      "name": "ai-workflow-skills-backend",
+      "description": "17 specialized AI skills for backend development: Python, FastAPI, Django, NestJS, Go, Rust, Java, and more",
+      "skills": [
+        "python-pro",
+        "fastapi-expert",
+        "django-expert",
+        "nestjs-expert",
+        "rails-expert",
+        "golang-pro",
+        "java-architect",
+        "spring-boot-engineer",
+        "php-pro",
+        "laravel-specialist",
+        "dotnet-core-expert",
+        "csharp-developer",
+        "rust-engineer",
+        "cpp-pro",
+        "kotlin-specialist",
+        "swift-expert",
+        "backend-patterns"
+      ]
+    },
+    "devops": {
+      "name": "ai-workflow-skills-devops",
+      "description": "7 specialized AI skills for DevOps and infrastructure: CI/CD, Kubernetes, Terraform, cloud platforms, SRE, and monitoring",
+      "skills": [
+        "devops-engineer",
+        "kubernetes-specialist",
+        "terraform-engineer",
+        "cloud-architect",
+        "sre-engineer",
+        "monitoring-expert",
+        "chaos-engineer"
+      ]
+    },
+    "database": {
+      "name": "ai-workflow-skills-database",
+      "description": "5 specialized AI skills for database and data: PostgreSQL, SQL optimization, Pandas, and Apache Spark",
+      "skills": [
+        "database-optimizer",
+        "postgres-pro",
+        "sql-pro",
+        "pandas-pro",
+        "spark-engineer"
+      ]
+    },
+    "testing": {
+      "name": "ai-workflow-skills-testing",
+      "description": "6 specialized AI skills for testing and quality: TDD, Playwright, code review, and security auditing",
+      "skills": [
+        "test-master",
+        "tdd-workflow",
+        "playwright-expert",
+        "code-reviewer",
+        "security-reviewer",
+        "secure-code-guardian"
+      ]
+    },
+    "architecture": {
+      "name": "ai-workflow-skills-architecture",
+      "description": "4 specialized AI skills for system architecture: API design, microservices, and GraphQL schema design",
+      "skills": [
+        "architecture-designer",
+        "api-designer",
+        "microservices-architect",
+        "graphql-architect"
+      ]
+    },
+    "ai-ml": {
+      "name": "ai-workflow-skills-ai-ml",
+      "description": "4 specialized AI skills for AI/ML: prompt engineering, model fine-tuning, ML pipelines, and RAG systems",
+      "skills": [
+        "prompt-engineer",
+        "fine-tuning-expert",
+        "ml-pipeline",
+        "rag-architect"
+      ]
+    },
+    "specialized": {
+      "name": "ai-workflow-skills-specialized",
+      "description": "8 specialized AI skills for domain-specific development: MCP, WebSockets, CLI tools, game dev, Shopify, WordPress, and more",
+      "skills": [
+        "mcp-developer",
+        "websocket-engineer",
+        "cli-developer",
+        "game-developer",
+        "embedded-systems",
+        "shopify-expert",
+        "wordpress-pro",
+        "salesforce-developer"
+      ]
+    },
+    "utilities": {
+      "name": "ai-workflow-skills-utilities",
+      "description": "7 specialized AI skills for development workflows: full-stack features, debugging, documentation, and legacy modernization",
+      "skills": [
+        "fullstack-guardian",
+        "feature-forge",
+        "legacy-modernizer",
+        "debugging-wizard",
+        "code-documenter",
+        "spec-miner",
+        "atlassian-mcp"
+      ]
+    }
+  }
+}

@@ -1,6 +1,14 @@
 ---
 name: backend-patterns
-description: Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes.
+description: "Use when implementing backend architecture patterns, repository pattern, CQRS, middleware, or server-side design patterns for Node.js, Express, and Next.js API routes."
+triggers:
+  - backend patterns
+  - repository pattern
+  - CQRS
+  - middleware patterns
+  - API design patterns
+  - server-side patterns
+  - Express patterns
 ---
 
 # Backend Development Patterns

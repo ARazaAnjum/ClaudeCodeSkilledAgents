@@ -1,6 +1,13 @@
 ---
 name: tdd-workflow
 description: Use this skill when writing new features, fixing bugs, or refactoring code. Enforces test-driven development with 80%+ coverage including unit, integration, and E2E tests.
+triggers:
+  - TDD
+  - test driven development
+  - test first
+  - red green refactor
+  - test coverage
+  - write tests before code
 ---
 
 # Test-Driven Development Workflow

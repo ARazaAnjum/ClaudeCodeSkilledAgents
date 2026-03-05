@@ -51,6 +51,7 @@ Load detailed guidance based on context:
 | Widgets | `references/widget-patterns.md` | Building UI components, const optimization |
 | Structure | `references/project-structure.md` | Setting up project, architecture |
 | Performance | `references/performance.md` | Optimization, profiling, jank fixes |
+| Flutter Coding Rules | `references/flutter-coding-rules.md` | Always apply when writing Flutter/Dart code |
 
 ## Constraints
 

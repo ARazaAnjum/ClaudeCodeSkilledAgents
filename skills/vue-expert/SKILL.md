@@ -66,6 +66,7 @@ Load detailed guidance based on context:
 | TypeScript | `references/typescript.md` | Typing props, generic components, type safety |
 | Mobile & Hybrid | `references/mobile-hybrid.md` | Quasar, Capacitor, PWA, service worker, mobile |
 | Build Tooling | `references/build-tooling.md` | Vite config, sourcemaps, optimization, bundling |
+| Vue Coding Rules | `references/vue-coding-rules.md` | Always apply when writing Vue code |
 
 ## Constraints
 

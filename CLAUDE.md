@@ -56,6 +56,11 @@ The `ai-workflow/process/` directory contains workflow templates:
 - **`generate-tasks.md`** — How to break a PRD into development tasks. Use after a PRD is created. Generate a numbered task list and save to `/tasks/[feature-name]/tasks-[feature-name].md`.
 - **`process-task-list.md`** — How to work through a task list. Use when implementing tasks from a generated list. Process tasks one at a time, verify each before moving on.
 
+These process workflows are also available as slash commands when using the plugin:
+- `/ai-workflow-skills:create-prd` — Create a PRD
+- `/ai-workflow-skills:generate-tasks` — Generate tasks from a PRD
+- `/ai-workflow-skills:process-tasks` — Process a task list
+
 ## Cursor Rules
 
 The `ai-workflow/rules/` directory contains coding standards:
@@ -89,6 +94,10 @@ your-project/
 │   │   └── references/   # Supporting docs
 │   ├── python-pro/
 │   └── ...
+├── scripts/
+│   ├── category-config.json      # Category plugin definitions
+│   └── build-category-plugins.js # Generates category sub-plugins
+├── dist/plugins/         # Generated category plugins (built via npm run build:plugins)
 ├── tasks/                # Generated PRDs and task lists (created during workflow)
 └── CLAUDE.md             # This file
 ```

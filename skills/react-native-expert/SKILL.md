@@ -50,6 +50,7 @@ Load detailed guidance based on context:
 | Lists | `references/list-optimization.md` | FlatList, performance, memo |
 | Storage | `references/storage-hooks.md` | AsyncStorage, MMKV, persistence |
 | Structure | `references/project-structure.md` | Project setup, architecture |
+| React Native Coding Rules | `references/react-native-coding-rules.md` | Always apply when writing React Native code |
 
 ## Constraints
 

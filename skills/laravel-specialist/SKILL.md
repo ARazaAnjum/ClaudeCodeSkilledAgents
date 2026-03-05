@@ -56,6 +56,7 @@ Load detailed guidance based on context:
 | Queue System | `references/queues.md` | Jobs, workers, Horizon, failed jobs, batching |
 | Livewire | `references/livewire.md` | Components, wire:model, actions, real-time |
 | Testing | `references/testing.md` | Feature tests, factories, mocking, Pest PHP |
+| Laravel Coding Rules | `references/laravel-coding-rules.md` | Always apply when writing Laravel code |
 
 ## Constraints
 
