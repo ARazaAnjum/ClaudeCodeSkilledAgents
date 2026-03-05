@@ -1,0 +1,32 @@
+{
+  "name": "ai-workflow-skills-specialized",
+  "description": "8 specialized AI skills for domain-specific development: MCP, WebSockets, CLI tools, game dev, Shopify, WordPress, and more",
+  "version": "2.0.0",
+  "author": {
+    "name": "ClaudeCodeSkills Contributors"
+  },
+  "repository": "https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "workflow",
+    "specialized"
+  ],
+  "skills": [
+    "./skills/ai-workflow-context",
+    "./skills/development-standards",
+    "./skills/mcp-developer",
+    "./skills/websocket-engineer",
+    "./skills/cli-developer",
+    "./skills/game-developer",
+    "./skills/embedded-systems",
+    "./skills/shopify-expert",
+    "./skills/wordpress-pro",
+    "./skills/salesforce-developer"
+  ],
+  "commands": [
+    "./commands/create-prd.md",
+    "./commands/generate-tasks.md",
+    "./commands/process-tasks.md"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "ai-workflow-skills-frontend",
+  "description": "10 specialized AI skills for frontend development: React, Vue, Angular, Next.js, Flutter, TypeScript, and more",
+  "version": "2.0.0",
+  "author": {
+    "name": "ClaudeCodeSkills Contributors"
+  },
+  "repository": "https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "workflow",
+    "frontend"
+  ],
+  "skills": [
+    "./skills/ai-workflow-context",
+    "./skills/development-standards",
+    "./skills/react-expert",
+    "./skills/vue-expert",
+    "./skills/vue-expert-js",
+    "./skills/angular-architect",
+    "./skills/nextjs-developer",
+    "./skills/react-native-expert",
+    "./skills/flutter-expert",
+    "./skills/frontend-design",
+    "./skills/typescript-pro",
+    "./skills/javascript-pro"
+  ],
+  "commands": [
+    "./commands/create-prd.md",
+    "./commands/generate-tasks.md",
+    "./commands/process-tasks.md"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "ai-workflow-skills-devops",
+  "description": "7 specialized AI skills for DevOps and infrastructure: CI/CD, Kubernetes, Terraform, cloud platforms, SRE, and monitoring",
+  "version": "2.0.0",
+  "author": {
+    "name": "ClaudeCodeSkills Contributors"
+  },
+  "repository": "https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "workflow",
+    "devops"
+  ],
+  "skills": [
+    "./skills/ai-workflow-context",
+    "./skills/development-standards",
+    "./skills/devops-engineer",
+    "./skills/kubernetes-specialist",
+    "./skills/terraform-engineer",
+    "./skills/cloud-architect",
+    "./skills/sre-engineer",
+    "./skills/monitoring-expert",
+    "./skills/chaos-engineer"
+  ],
+  "commands": [
+    "./commands/create-prd.md",
+    "./commands/generate-tasks.md",
+    "./commands/process-tasks.md"
+  ]
+}

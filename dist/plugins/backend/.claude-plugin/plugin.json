@@ -1,0 +1,41 @@
+{
+  "name": "ai-workflow-skills-backend",
+  "description": "17 specialized AI skills for backend development: Python, FastAPI, Django, NestJS, Go, Rust, Java, and more",
+  "version": "2.0.0",
+  "author": {
+    "name": "ClaudeCodeSkills Contributors"
+  },
+  "repository": "https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "workflow",
+    "backend"
+  ],
+  "skills": [
+    "./skills/ai-workflow-context",
+    "./skills/development-standards",
+    "./skills/python-pro",
+    "./skills/fastapi-expert",
+    "./skills/django-expert",
+    "./skills/nestjs-expert",
+    "./skills/rails-expert",
+    "./skills/golang-pro",
+    "./skills/java-architect",
+    "./skills/spring-boot-engineer",
+    "./skills/php-pro",
+    "./skills/laravel-specialist",
+    "./skills/dotnet-core-expert",
+    "./skills/csharp-developer",
+    "./skills/rust-engineer",
+    "./skills/cpp-pro",
+    "./skills/kotlin-specialist",
+    "./skills/swift-expert",
+    "./skills/backend-patterns"
+  ],
+  "commands": [
+    "./commands/create-prd.md",
+    "./commands/generate-tasks.md",
+    "./commands/process-tasks.md"
+  ]
+}

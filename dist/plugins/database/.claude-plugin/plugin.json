@@ -1,0 +1,29 @@
+{
+  "name": "ai-workflow-skills-database",
+  "description": "5 specialized AI skills for database and data: PostgreSQL, SQL optimization, Pandas, and Apache Spark",
+  "version": "2.0.0",
+  "author": {
+    "name": "ClaudeCodeSkills Contributors"
+  },
+  "repository": "https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "workflow",
+    "database"
+  ],
+  "skills": [
+    "./skills/ai-workflow-context",
+    "./skills/development-standards",
+    "./skills/database-optimizer",
+    "./skills/postgres-pro",
+    "./skills/sql-pro",
+    "./skills/pandas-pro",
+    "./skills/spark-engineer"
+  ],
+  "commands": [
+    "./commands/create-prd.md",
+    "./commands/generate-tasks.md",
+    "./commands/process-tasks.md"
+  ]
+}

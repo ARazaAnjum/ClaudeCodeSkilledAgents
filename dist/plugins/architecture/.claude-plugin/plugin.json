@@ -1,0 +1,28 @@
+{
+  "name": "ai-workflow-skills-architecture",
+  "description": "4 specialized AI skills for system architecture: API design, microservices, and GraphQL schema design",
+  "version": "2.0.0",
+  "author": {
+    "name": "ClaudeCodeSkills Contributors"
+  },
+  "repository": "https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "workflow",
+    "architecture"
+  ],
+  "skills": [
+    "./skills/ai-workflow-context",
+    "./skills/development-standards",
+    "./skills/architecture-designer",
+    "./skills/api-designer",
+    "./skills/microservices-architect",
+    "./skills/graphql-architect"
+  ],
+  "commands": [
+    "./commands/create-prd.md",
+    "./commands/generate-tasks.md",
+    "./commands/process-tasks.md"
+  ]
+}

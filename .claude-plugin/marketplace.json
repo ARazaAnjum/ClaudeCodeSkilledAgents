@@ -1,0 +1,115 @@
+{
+  "name": "ai-workflow-skills",
+  "owner": {
+    "name": "ClaudeCodeSkills Contributors",
+    "email": "arazaanjum@gmail.com"
+  },
+  "metadata": {
+    "description": "70 specialized AI skills for production-grade development across React, Python, FastAPI, DevOps, and 60+ more technologies",
+    "version": "2.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ai-workflow-skills",
+      "source": "./",
+      "description": "Full plugin with all 70 AI skills (68 user-invocable + 2 background), 3 slash commands, and development standards. Covers frontend, backend, DevOps, database, testing, architecture, AI/ML, and specialized domains.",
+      "version": "2.0.0",
+      "author": {
+        "name": "ClaudeCodeSkills Contributors"
+      },
+      "homepage": "https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents",
+      "repository": "https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents",
+      "license": "MIT",
+      "keywords": [
+        "skills",
+        "workflow",
+        "react",
+        "python",
+        "devops",
+        "testing",
+        "architecture",
+        "api",
+        "database",
+        "security",
+        "typescript",
+        "fastapi",
+        "django",
+        "kubernetes",
+        "docker"
+      ],
+      "category": "development"
+    },
+    {
+      "name": "ai-workflow-skills-frontend",
+      "source": "./dist/plugins/frontend",
+      "description": "10 frontend development skills: React, Vue, Angular, Next.js, Flutter, React Native, TypeScript, JavaScript, and frontend design.",
+      "version": "2.0.0",
+      "keywords": ["frontend", "react", "vue", "angular", "nextjs", "flutter", "typescript"],
+      "category": "development"
+    },
+    {
+      "name": "ai-workflow-skills-backend",
+      "source": "./dist/plugins/backend",
+      "description": "17 backend development skills: Python, FastAPI, Django, NestJS, Rails, Go, Java, Spring Boot, PHP, Laravel, .NET, Rust, C++, and more.",
+      "version": "2.0.0",
+      "keywords": ["backend", "python", "fastapi", "django", "nestjs", "golang", "java", "rust"],
+      "category": "development"
+    },
+    {
+      "name": "ai-workflow-skills-devops",
+      "source": "./dist/plugins/devops",
+      "description": "7 DevOps and infrastructure skills: CI/CD, Kubernetes, Terraform, cloud platforms, SRE, monitoring, and chaos engineering.",
+      "version": "2.0.0",
+      "keywords": ["devops", "kubernetes", "terraform", "docker", "aws", "cloud", "sre"],
+      "category": "infrastructure"
+    },
+    {
+      "name": "ai-workflow-skills-database",
+      "source": "./dist/plugins/database",
+      "description": "5 database and data skills: PostgreSQL, SQL optimization, database performance, Pandas, and Apache Spark.",
+      "version": "2.0.0",
+      "keywords": ["database", "postgresql", "sql", "pandas", "spark"],
+      "category": "development"
+    },
+    {
+      "name": "ai-workflow-skills-testing",
+      "source": "./dist/plugins/testing",
+      "description": "6 testing and quality skills: TDD, Playwright E2E, code review, security review, and secure coding practices.",
+      "version": "2.0.0",
+      "keywords": ["testing", "tdd", "playwright", "code-review", "security"],
+      "category": "quality"
+    },
+    {
+      "name": "ai-workflow-skills-architecture",
+      "source": "./dist/plugins/architecture",
+      "description": "4 architecture and design skills: system architecture, API design, microservices patterns, and GraphQL schema design.",
+      "version": "2.0.0",
+      "keywords": ["architecture", "api-design", "microservices", "graphql"],
+      "category": "development"
+    },
+    {
+      "name": "ai-workflow-skills-ai-ml",
+      "source": "./dist/plugins/ai-ml",
+      "description": "4 AI/ML skills: prompt engineering, model fine-tuning, ML pipelines, and RAG system architecture.",
+      "version": "2.0.0",
+      "keywords": ["ai", "ml", "prompt-engineering", "rag", "fine-tuning"],
+      "category": "ai-ml"
+    },
+    {
+      "name": "ai-workflow-skills-specialized",
+      "source": "./dist/plugins/specialized",
+      "description": "8 domain-specific skills: MCP development, WebSockets, CLI tools, game dev, embedded systems, Shopify, WordPress, and Salesforce.",
+      "version": "2.0.0",
+      "keywords": ["mcp", "websocket", "cli", "gamedev", "shopify", "wordpress"],
+      "category": "specialized"
+    },
+    {
+      "name": "ai-workflow-skills-utilities",
+      "source": "./dist/plugins/utilities",
+      "description": "7 workflow utility skills: full-stack features, debugging, documentation, legacy modernization, and requirements gathering.",
+      "version": "2.0.0",
+      "keywords": ["utilities", "debugging", "documentation", "legacy", "workflow"],
+      "category": "utilities"
+    }
+  ]
+}

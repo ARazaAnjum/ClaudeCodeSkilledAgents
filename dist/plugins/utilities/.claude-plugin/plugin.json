@@ -1,0 +1,31 @@
+{
+  "name": "ai-workflow-skills-utilities",
+  "description": "7 specialized AI skills for development workflows: full-stack features, debugging, documentation, and legacy modernization",
+  "version": "2.0.0",
+  "author": {
+    "name": "ClaudeCodeSkills Contributors"
+  },
+  "repository": "https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "workflow",
+    "utilities"
+  ],
+  "skills": [
+    "./skills/ai-workflow-context",
+    "./skills/development-standards",
+    "./skills/fullstack-guardian",
+    "./skills/feature-forge",
+    "./skills/legacy-modernizer",
+    "./skills/debugging-wizard",
+    "./skills/code-documenter",
+    "./skills/spec-miner",
+    "./skills/atlassian-mcp"
+  ],
+  "commands": [
+    "./commands/create-prd.md",
+    "./commands/generate-tasks.md",
+    "./commands/process-tasks.md"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "ai-workflow-skills-testing",
+  "description": "6 specialized AI skills for testing and quality: TDD, Playwright, code review, and security auditing",
+  "version": "2.0.0",
+  "author": {
+    "name": "ClaudeCodeSkills Contributors"
+  },
+  "repository": "https://github.com/ARazaAnjum/ClaudeCodeSkilledAgents",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "workflow",
+    "testing"
+  ],
+  "skills": [
+    "./skills/ai-workflow-context",
+    "./skills/development-standards",
+    "./skills/test-master",
+    "./skills/tdd-workflow",
+    "./skills/playwright-expert",
+    "./skills/code-reviewer",
+    "./skills/security-reviewer",
+    "./skills/secure-code-guardian"
+  ],
+  "commands": [
+    "./commands/create-prd.md",
+    "./commands/generate-tasks.md",
+    "./commands/process-tasks.md"
+  ]
+}
