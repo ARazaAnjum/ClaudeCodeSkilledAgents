@@ -14,9 +14,44 @@ A comprehensive collection of production-grade AI skills covering frontend, back
 
 ## 📦 Install
 
-### Option 1: Claude Code Plugin (Recommended)
+### Option 1: Marketplace Install (Recommended)
 
-Install as a **Claude Code plugin** — all 70 skills load natively with auto-triggering and slash commands.
+Install via the **Claude Code plugin marketplace** — the easiest way to get started.
+
+```bash
+# 1. Register the marketplace (one-time)
+claude plugin marketplace add ARazaAnjum/ClaudeCodeSkilledAgents
+
+# 2. Install the full plugin (all 70 skills)
+claude plugin install ai-workflow-skills@claude-skilled-agents
+```
+
+**Or install only the skills you need:**
+
+```bash
+claude plugin install ai-workflow-skills-frontend@claude-skilled-agents     # 10 frontend skills
+claude plugin install ai-workflow-skills-backend@claude-skilled-agents      # 17 backend skills
+claude plugin install ai-workflow-skills-devops@claude-skilled-agents       # 7 DevOps skills
+claude plugin install ai-workflow-skills-database@claude-skilled-agents     # 5 database skills
+claude plugin install ai-workflow-skills-testing@claude-skilled-agents      # 6 testing skills
+claude plugin install ai-workflow-skills-architecture@claude-skilled-agents # 4 architecture skills
+claude plugin install ai-workflow-skills-ai-ml@claude-skilled-agents        # 4 AI/ML skills
+claude plugin install ai-workflow-skills-specialized@claude-skilled-agents  # 8 specialized skills
+claude plugin install ai-workflow-skills-utilities@claude-skilled-agents    # 7 utility skills
+```
+
+**Manage your installation:**
+
+```bash
+claude plugin update ai-workflow-skills      # Update to latest
+claude plugin disable ai-workflow-skills     # Temporarily disable
+claude plugin enable ai-workflow-skills      # Re-enable
+claude plugin uninstall ai-workflow-skills   # Remove
+```
+
+### Option 2: Plugin via Git Clone
+
+Clone the repo and load directly — useful for development or if you prefer manual control.
 
 **Quick start (one command):**
 
@@ -38,6 +73,12 @@ claude --plugin-dir ./ClaudeCodeSkilledAgents
 > alias claude='claude --plugin-dir ~/.claude/plugins/ai-workflow-skills'
 > ```
 
+**To update later:**
+
+```bash
+cd ~/.claude/plugins/ai-workflow-skills && git pull
+```
+
 **Available slash commands once loaded:**
 
 | Command | Description |
@@ -47,12 +88,6 @@ claude --plugin-dir ./ClaudeCodeSkilledAgents
 | `/ai-workflow-skills:process-tasks [task-path]` | Work through a task list step by step |
 
 All 70 skills auto-trigger based on your task — just ask a question and Claude picks the right expert.
-
-**To update later:**
-
-```bash
-cd ~/.claude/plugins/ai-workflow-skills && git pull
-```
 
 ### Option 2: CLI Setup
 
